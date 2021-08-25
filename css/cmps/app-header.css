@@ -4,24 +4,34 @@
     padding: 0 15px;
     background-color: gold;
     align-items: center;
+
 }
 
 .open {
+    
     display: block;
 }
 
 .nav-container {
     position: absolute;
-    right: 15px;
+    right: 8px;
     display: grid;
+    /* transition-duration: 4s; */
     grid-template-rows: repeat(3,1fr);
     grid-template-columns: repeat(2,1fr);
     grid-area: "home email"
     "keep books"
     "about .";
+    background-color: rgb(224, 218, 218);
+    opacity: 0.8;
+    z-index: 1;
 }
+.nav-container>*{
+    margin: 2px;
+} 
 
 .home{
+
     grid-area: 'home';
 }
 .email{

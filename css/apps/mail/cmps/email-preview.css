@@ -1,0 +1,21 @@
+.email-hr{
+    background-color:rgb(206, 194, 194);
+    height: 2px;
+    opacity: 0.5;
+}
+
+
+.email-preview{
+    display: flex;
+    gap:5px;
+    justify-content: space-between;
+/* align-items: center; */
+}
+.email-preview>*:not(:last-child){
+    border-right: 1px solid gray;
+}
+
+.email-clock{
+   color: blue; 
+   font-weight: 500;
+}
