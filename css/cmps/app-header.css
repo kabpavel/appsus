@@ -1,0 +1,13 @@
+.app-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+.open{
+    display: block;
+}
+.close{
+    display: none;
+}
