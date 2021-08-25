@@ -128,7 +128,7 @@ function _saveNotesToStorage() {
                 title: "Bobi and Me"
             },
             style: {
-                backgroundColor: "#00d"
+                backgroundColor: "#F28C81"
             }
         },
         ];
