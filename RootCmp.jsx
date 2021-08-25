@@ -1,6 +1,6 @@
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
-import { AppFooter } from './cmps/AppFooter.jsx';
+import { AppFooter } from './js/cmps/AppFooter.jsx';
 import { AppHeader } from './js/cmps/app-header.jsx';
 // import { UserMsg } from './cmps/UserMsg.jsx';
 // import { About } from './pages/About.jsx';
