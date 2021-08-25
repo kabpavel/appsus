@@ -2,6 +2,7 @@ const { Link } = ReactRouterDOM
 
 import { Clock } from '../../../cmps/clock.jsx';
 import { EmailDetails } from './email-details-cmp.jsx';
+import { LongTxt } from './LongTxt.jsx';
 // import { LongTxt } from './LongTxt.jsx'
 
 export class EmailPreview extends React.Component {
@@ -32,15 +33,19 @@ export class EmailPreview extends React.Component {
                     this.toggleChangeSelect()
 
                 }} className={selectedEmail?"email-preview email-selected":"email-preview"}>
-                    <div>
-                        <h4> {email.name}</h4>
-                        <h4> {email.title}</h4>
-                        <h4> {email.content}</h4>
+                  
+                    <div className="email-user-container">
+                        <img src="assert/Circle-Line.ico" alt="" />
+                        <div>
+                        <h4 className="email-preview-name"> {email.name}</h4>
+                        <h4 className="email-preview-title"> {email.title}</h4>
+                        <LongTxt text={email.content} />
+                        </div>
                     </div>
                     <div className="email-clock">
                         <Clock />
                     </div>
-                    {/* <LongTxt text={email.description} /> */}
+             
                 </article>
                 <hr className="email-hr" />
                 {selectedEmail && <EmailDetails email={email} onDeleteEmail={onDeleteEmail} />}
