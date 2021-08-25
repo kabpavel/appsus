@@ -120,6 +120,16 @@ function _saveNotesToStorage() {
                 }
                 ]
             }
-        }
+        }, {
+            id: "n104",
+            type: "note-img",
+            info: {
+                url: "http://some-img/me",
+                title: "Bobi and Me"
+            },
+            style: {
+                backgroundColor: "#00d"
+            }
+        },
         ];
     }
