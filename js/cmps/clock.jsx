@@ -16,9 +16,8 @@ export class Clock extends React.Component {
         const hour = time.getHours() > 10 ? time.getHours() : '0' + time.getHours();
         const minutes = time.getMinutes() > 10 ? time.getMinutes() : '0' + time.getMinutes();
 
-        return <div clock-container>
+        return <div className="clock-container">
             {hour+':'+minutes}
         </div>
     }
-
 }
