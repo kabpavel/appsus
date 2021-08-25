@@ -20,11 +20,13 @@ class _AppHeader extends React.Component {
                 <nav onClick={() => {
                     this.setState({ isOpen: !isOpen })
                 }}> ☰
-                    <NavLink activeClassName="my-active" className={isOpen ? "open" : "close"} exact to="/" >Home</NavLink>
-                    <NavLink activeClassName="my-active" className={isOpen ? "open" : "close"} to="/email" >Email</NavLink>
-                    <NavLink activeClassName="my-active" className={isOpen ? "open" : "close"} to="/keep-note" >keep</NavLink>
-                    <NavLink activeClassName="my-active" className={isOpen ? "open" : "close"} to="/miss-book" >Books</NavLink>
-                    <NavLink activeClassName="my-active" className={isOpen ? "open" : "close"} to="/about" >About</NavLink>
+                    <div className="nav-container">
+                        <NavLink activeClassName="my-active" className={isOpen ? "open home" : "close home"} exact to="/" >Home</NavLink>
+                        <NavLink activeClassName="my-active" className={isOpen ? "open email" : "close email"} to="/email" >Email</NavLink>
+                        <NavLink activeClassName="my-active" className={isOpen ? "open keep" : "close keep"} to="/keep-note" >keep</NavLink>
+                        <NavLink activeClassName="my-active" className={isOpen ? "open book" : "close book"} to="/miss-book" >Books</NavLink>
+                        <NavLink activeClassName="my-active" className={isOpen ? "open about" : "close about"} to="/about" >About</NavLink>
+                    </div>
                 </nav>
             </section>
         )
