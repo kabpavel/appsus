@@ -16,7 +16,7 @@ var gNotes;
 _createNotes();
 
 function query() {
-    return []//gNotes// temp
+    return gNotes// temp
     if (filterBy) {
         // let { title, minPrice, maxPrice } = filterBy
         // maxPrice = maxPrice ? maxPrice : Infinity

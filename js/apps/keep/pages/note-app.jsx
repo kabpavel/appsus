@@ -17,6 +17,7 @@ export class NoteApp extends React.Component {
         //     this.setState({ notesToShow })
         // })
         const  notesToShow = noteService.query()
+        console.log('notesToShow',notesToShow)
         this.setState({ notesToShow })
     }
 
