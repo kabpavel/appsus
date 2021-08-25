@@ -1,16 +1,42 @@
-.app-header{
+.app-header {
     display: flex;
     justify-content: space-between;
-    padding: 6px;
-    background-color: yellow;
+    padding: 0 15px;
+    background-color: gold;
     align-items: center;
 }
 
-
-
-.open{
+.open {
     display: block;
 }
-.close{
+
+.nav-container {
+    position: absolute;
+    right: 15px;
+    display: grid;
+    grid-template-rows: repeat(3,1fr);
+    grid-template-columns: repeat(2,1fr);
+    grid-area: "home email"
+    "keep books"
+    "about .";
+}
+
+.home{
+    grid-area: 'home';
+}
+.email{
+    grid-area: 'email';
+}
+.keep{
+    grid-area: 'keep';
+}
+.books{
+    grid-area: 'books';
+}
+.about{
+    grid-area: 'about';
+}
+
+.close {
     display: none;
 }
