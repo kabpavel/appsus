@@ -95,6 +95,9 @@ function _saveNotesToStorage() {
             isPinned: true,
             info: {
                 txt: "Fullstack Me Baby!"
+            },
+            style: {
+                backgroundColor: "#D7ACFF"
             }
         }, {
             id: "n102",
@@ -104,7 +107,7 @@ function _saveNotesToStorage() {
                 title: "Bobi and Me"
             },
             style: {
-                backgroundColor: "#00d"
+                backgroundColor: "#FFF473"
             }
         }, {
             id: "n103",
@@ -119,17 +122,20 @@ function _saveNotesToStorage() {
                     doneAt: 187111111
                 }
                 ]
+            },
+            style: {
+                backgroundColor: "#CBF0F8"
             }
         }, {
             id: "n104",
-            type: "note-img",
+            type: "note-video",
             info: {
-                url: "http://some-img/me",
-                title: "Bobi and Me"
+                url: "https://www.youtube.com/watch?v=5_ARibfCMhw",
+                title: "ZHU - In the Morning (Official Video)"
             },
             style: {
                 backgroundColor: "#F28C81"
             }
-        },
+        }
         ];
     }
