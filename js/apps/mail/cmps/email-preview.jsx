@@ -24,7 +24,7 @@ export class EmailPreview extends React.Component {
         }
     }
     render() {
-        const { email } = this.props
+        const { email ,onDeleteEmail} = this.props
         const { selectedEmail } = this.state
         return (
             <Link to={`/email/${email.id}`} >

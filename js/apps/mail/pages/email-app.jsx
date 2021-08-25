@@ -43,20 +43,21 @@ const { NavLink, withRouter } = ReactRouterDOM
         if (!emails.length) return <div>Loading...</div>
         return <section className="email-app">
 
-            <nav onClick={() => {
+            <nav className="email-nav-container" onClick={() => {
                     this.setState({ isOpen: !isOpen })
-                }}>  ☰
-                    <div className="email-nav-container">
+                }}> <div className="email-nav-icon">☰</div>
+                    <div className="email-nav">
                         <NavLink activeClassName="my-active" className={isOpen ? "open inbox" : "close inbox"} exact to="/email" >Inbox</NavLink>
                         <NavLink activeClassName="my-active" className={isOpen ? "open starred" : "close starred"} to="/email/starred" >Starred</NavLink>
-                        <NavLink activeClassName="my-active" className={isOpen ? "open sent-mail" : "close sent-mail"} to="/sent-mail" >Sent Mail</NavLink>
+                        <NavLink activeClassName="my-active" className={isOpen ? "open sent-mail" : "close sent-mail"} to="/email/sent-mail" >Sent Mail</NavLink>
                         <NavLink activeClassName="my-active" className={isOpen ? "open drafts" : "close drafts"} to="/email/drafts" >Drafts</NavLink>
                     </div>
                 </nav>
+                <hr className="email-hr" />
             <React.Fragment>
                 {/* <AddEmail/> */}
                 {/* <EmailFilter onSetFilter={this.onSetFilter} /> */}
-                <EmailList emails={emails} onSelectEmail={this.onSelectEmail} />
+                <EmailList emails={emails} onSelectEmail={this.onSelectEmail} onDeleteEmail={this.onDeleteEmail}  />
             </React.Fragment>
             {/* {selectedEmail && <EmailDetails email={selectedEmail} onDeleteEmail={this.onDeleteEmail} />} */}
         </section>

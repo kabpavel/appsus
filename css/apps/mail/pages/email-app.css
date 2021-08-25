@@ -1,0 +1,18 @@
+.email-nav-icon {
+    padding: 5px;
+    font-size: 20px;
+    font-weight: 700;
+    /* height: 30px; */
+}
+
+.email-nav-container {
+    display: flex;
+    padding: 5px;
+    /* align-items: center; */
+}
+
+
+.email-nav{
+    position: fixed;
+    left: 50px;
+}
