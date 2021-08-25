@@ -1,12 +1,8 @@
 export class NoteDetails extends React.Component {
 
-
-render() {
-
-return {
-
-
-}
-
-
+    render() {
+        return (
+            <section></section>
+        )
+    }
 }
