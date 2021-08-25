@@ -1,0 +1,24 @@
+@import '../css/parts/base.css';
+@import '../css/parts/fonts.css';
+@import '../css/parts/helpers.css';
+
+@import '../css/setup.css';
+
+@import '../css/cmps/app-home.css';
+@import '../css/cmps/user-msg.css';
+
+@import '../css/apps/keep/cmps/note-filter.css';
+@import '../css/apps/keep/cmps/note-list.css';
+@import '../css/apps/keep/cmps/note-preview.css';
+@import '../css/apps/keep/pages/note-details.css';
+@import '../css/apps/keep/pages/note-index.css';
+
+
+@import '../css/apps/mail/cmps/email-compose.css';
+@import '../css/apps/mail/cmps/email-filter.css';
+@import '../css/apps/mail/cmps/email-folder-list.css';
+@import '../css/apps/mail/cmps/email-list.css';
+@import '../css/apps/mail/cmps/email-preview.css';
+@import '../css/apps/mail/pages/email-details.css';
+@import '../css/apps/mail/pages/email-index.css';
+
