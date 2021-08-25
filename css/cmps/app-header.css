@@ -1,6 +1,9 @@
 .app-header{
     display: flex;
     justify-content: space-between;
+    padding: 6px;
+    background-color: yellow;
+    align-items: center;
 }
 
 

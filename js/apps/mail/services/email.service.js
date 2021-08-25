@@ -1,22 +1,35 @@
-import { utilService } from './util.service.js'
-import { storageService } from './storage.service.js'
+import { utilService } from '../../../services/util.service.js'
+import { storageService } from '../../../services/storage.service.js'
 
-export const carService = {
+export const emailService = {
     query,
-    saveCar,
+    saveEmail,
     deleteEmail,
     getCarById,
     getNextemailId
 }
 
 const KEY = 'emails';
-var gEmail;
+const gEmail = [{
+        id: 1,
+        name:'itay',
+        title: 'normally i stay up late',
+        content: 'but then .........KEY.anchor.'
+    },
+    {
+        id: 2,
+        name:'itay',
+        title: 'normally i stay up late',
+        content: 'but then .........KEY.anchor.'
+    }
+];
 
-_createEmails();
+// _createEmails();
 
 function query(filterBy) {
     if (filterBy) {
     }
+    console.log('gEmail',gEmail);
     return Promise.resolve(gEmail)
 }
 
@@ -29,7 +42,7 @@ function deleteEmail(emailId) {
     return Promise.resolve()
 }
 
-function saveCar(emailToEdit) {
+function saveEmail(emailToEdit) {
     return emailToEdit.id ? _updateCar(emailToEdit) : _addEmail(emailToEdit)
 }
 
