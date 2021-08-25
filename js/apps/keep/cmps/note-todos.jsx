@@ -13,7 +13,7 @@ export class NoteTodos extends React.Component {
                     <h2>Todos</h2>
                      <h2>{note.info.title}</h2>
                     <ul>
-                        {note.info.todos.map(todo =><li>{todo.text}</li>)}
+                        {note.info.todos.map((todo, index) =><li key={index}>{todo.text}</li>)}
                     </ul> 
                 </div>
             </div>
