@@ -1,6 +1,6 @@
 const Router = ReactRouterDOM.HashRouter
 const { Route, Switch } = ReactRouterDOM
-//import { AppFooter } from './cmps/AppFooter.jsx';
+import { AppFooter } from './js/cmps/app-footer.jsx';
 import { AppHeader } from './js/cmps/app-header.jsx';
 // import { UserMsg } from './cmps/UserMsg.jsx';
 // import { About } from './pages/About.jsx';
@@ -14,7 +14,7 @@ export function App() {
   return (
     <Router>
       <header>
-        <AppHeader/>
+        <AppHeader />
       </header>
       <main>
         <Switch>
@@ -26,7 +26,7 @@ export function App() {
         </Switch>
       </main>
       <footer>
-        {/* <AppFooter/> */}
+        <AppFooter />
       </footer>
       {/* <UserMsg/> */}
     </Router>
