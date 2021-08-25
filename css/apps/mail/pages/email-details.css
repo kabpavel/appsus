@@ -1,0 +1,25 @@
+
+.detailes-container{
+    display: flex;
+    flex-direction: column;
+    margin: 0 10px;
+}
+.email-details-title{
+    font-weight: 200;
+    margin: 3px;
+font-size: 2rem;
+}
+.email-details-name{
+color: gray;
+
+}
+.email-details-name span{
+    color: black;
+    font-weight: 600;
+}
+
+.email-details-content{
+    align-self: center;
+    margin: 0 30px;
+    font-weight: 400;
+}

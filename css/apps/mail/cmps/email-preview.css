@@ -2,17 +2,20 @@
     background-color:rgb(206, 194, 194);
     height: 2px;
     opacity: 0.5;
+    margin: 0;
+    border: none;
 }
 
 
 .email-preview{
     display: flex;
-    gap:5px;
+    /* gap:5px; */
     justify-content: space-between;
 /* align-items: center; */
 }
-.email-preview>*:not(:last-child){
-    border-right: 1px solid gray;
+.email-selected{
+    background-color: rgb(246 246 246);
+
 }
 
 .email-clock{
