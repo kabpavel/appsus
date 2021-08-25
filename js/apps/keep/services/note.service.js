@@ -15,7 +15,8 @@ var gNotes;
 
 _createNotes();
 
-function query(filterBy) {
+function query() {
+    return []//gNotes// temp
     if (filterBy) {
         // let { title, minPrice, maxPrice } = filterBy
         // maxPrice = maxPrice ? maxPrice : Infinity
@@ -29,6 +30,7 @@ function query(filterBy) {
 
     return Promise.resolve(gNotes)
 }
+
 
 function deleteNote(noteId) {
     var noteIdx = gNotes.findIndex((note) => noteId === note.id)
@@ -63,9 +65,6 @@ function updateNote(noteId, newNote) {
     return Promise.resolve()
 }
 
-
-
-
 function _createNote(id, type, isPinned, info, style) {
     return {
         id: (id) || utilService.makeId(),
@@ -90,8 +89,7 @@ function _saveNotesToStorage() {
 }
 
     function getTempNotes() {
-        return
-        [{
+        return  [{
             id: "n101",
             type: "note-txt",
             isPinned: true,
@@ -124,5 +122,4 @@ function _saveNotesToStorage() {
             }
         }
         ];
-
     }

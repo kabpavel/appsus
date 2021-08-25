@@ -13,9 +13,11 @@ export class NoteApp extends React.Component {
 
 
     loadNotes = () => {
-        noteService.query(this.state.filterBy).then((notesToShow) => {
-            this.setState({ notesToShow })
-        })
+        // noteService.query(this.state.filterBy).then((notesToShow) => {
+        //     this.setState({ notesToShow })
+        // })
+        const  notesToShow = noteService.query()
+        this.setState({ notesToShow })
     }
 
     render() {
