@@ -1,6 +1,10 @@
 .note-container {
   display: flex;
   flex-direction: column;
+
+  flex-wrap: wrap;
+  gap: 15px;
+
   align-items: center;
   justify-content: center;
   align-content: center;
@@ -8,9 +12,14 @@
 }
 
 .note-preview-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
   font-size: 15px;
   height: 390px;
-  width: 355px;
+  min-width: 355px;
   background-color: rgb(206, 194, 194);
   box-shadow: 1px 0px 6px 0px rgb(136, 114, 114);
   border-radius: 35px;
@@ -25,6 +34,11 @@
   word-break: break-all;
 }
 
+.note-preview-container img {
+  width: 305px;
+}
+
 .note-title div {
   font-size: 1.2rem;
 }
+

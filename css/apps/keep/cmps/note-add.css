@@ -1,0 +1,19 @@
+.note-add-container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #E8E8E8;
+    width: 100px;
+    min-width: 375px;
+    height: 160px;
+}
+
+.note-add input[type=image] {
+    width: 25px;
+    height: 25px;
+}
+
+.note-add button {
+    width: 25px;
+    height: 25px;
+} 
+
