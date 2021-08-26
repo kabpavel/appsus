@@ -3,7 +3,6 @@
 export class NoteTodos extends React.Component {
 
     render() {
-        console.log('this.props',this.props)
 
         const { note } = this.props
         if(!note) return <div>Loading...</div>

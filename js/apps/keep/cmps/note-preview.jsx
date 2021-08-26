@@ -22,7 +22,6 @@ export class NotePreview extends React.Component {
     }
 
     get noteType() {
-        console.log(this.props)
         return this.props.note.type
     }
 
