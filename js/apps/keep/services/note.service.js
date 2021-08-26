@@ -72,7 +72,7 @@ function _createNote(type, isPinned, info, style) {
         type,
         isPinned: false,
         info,
-        style: { backgroundColor: utilService.getRandomColor() }
+        style: { backgroundColor: utilService.increaseBrightness(utilService.getRandomColor(), 50) }
     }
 }
 

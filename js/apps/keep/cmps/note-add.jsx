@@ -4,17 +4,17 @@ import { noteService } from '../services/note.service.js';
 export class NoteAdd extends React.Component {
 
     state = {
-        node: null,
-        style: null,
-        inputText: null,
-        type: null
+        node: '',
+        style: '',
+        inputText: '',
+        type: '',
+
     }
 
     componentDidMount() {
         const type = 'note-txt'
         this.setState({ type })
     }
-
 
     handleChange = (ev) => {
         console.log('handleChange')
@@ -36,7 +36,7 @@ export class NoteAdd extends React.Component {
         ev.preventDefault()
         console.log('onSave')
         const { type, inputText } = this.state
-        debugger
+        
         if (!inputText) return
         const infoList = inputText.split('|')
         if (!infoList) return//todo message
@@ -75,7 +75,13 @@ export class NoteAdd extends React.Component {
         console.log('info', info)
 
         noteService.addNote(type, false, info, '')
-            .then(() => this.props.history.push('/note-app'))
+            .then(() => {
+                const inputText = ''
+                this.setState({ inputText })
+            }).then(() => {
+                const { handleLoadNotes } = this.props
+                handleLoadNotes()
+            })
     }
 
     placeholder = () => {
@@ -101,7 +107,7 @@ export class NoteAdd extends React.Component {
     }
 
     render() {
-        const { type, inputText } = this.state
+        const { type, inputText, handleLoadNotes } = this.state
         if (!type) return <div>NoteAdd Loading...</div>
         return (
             <section className="note-add-container">
@@ -109,12 +115,12 @@ export class NoteAdd extends React.Component {
                     <input className="input-text" type="text" name="text" autocomplete="off" placeholder={`${this.placeholder()}`} value={inputText} onChange={this.handleChange} />
 
                     <div className="buttons-container">
-                        <button onClick={this.handleChange} name="note-txt"><img src={`../js/apps/keep/img/note-txt${this.addSelect('note-txt')}.png`} alt="" /></button>
-                        <button onClick={this.handleChange} name="note-audio"><img src={`../js/apps/keep/img/note-audio${this.addSelect('note-audio')}.png`} alt="" /></button>
-                        <button onClick={this.handleChange} name="note-todos"><img src={`../js/apps/keep/img/note-todos${this.addSelect('note-todos')}.png`} alt="" /></button>
-                        <button onClick={this.handleChange} name="note-img"><img src={`../js/apps/keep/img/note-img${this.addSelect('note-img')}.png`} alt="" /></button>
-                        <button onClick={this.handleChange} name="note-video"><img src={`../js/apps/keep/img/note-video${this.addSelect('note-video')}.png`} alt="" /></button>
-                        <button onClick={this.onSave}><img src={'../js/apps/keep/img/save.png'} alt="" /></button>
+                        <img onClick={this.handleChange} name="note-txt" src={`../js/apps/keep/img/note-txt${this.addSelect('note-txt')}.png`} alt="" />
+                        {/* <img onClick={this.handleChange} name="note-audio" src={`../js/apps/keep/img/note-audio${this.addSelect('note-audio')}.png`} alt="" /> */}
+                        <img onClick={this.handleChange} name="note-todos" src={`../js/apps/keep/img/note-todos${this.addSelect('note-todos')}.png`} alt="" />
+                        <img onClick={this.handleChange} name="note-img" src={`../js/apps/keep/img/note-img${this.addSelect('note-img')}.png`} alt="" />
+                        <img onClick={this.handleChange} name="note-video" src={`../js/apps/keep/img/note-video${this.addSelect('note-video')}.png`} alt="" />
+                        <img src={'../js/apps/keep/img/save.png'} alt="" onClick={this.onSave} />
                     </div>
                 </div>
             </section>

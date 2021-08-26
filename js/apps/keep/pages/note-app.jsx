@@ -21,6 +21,10 @@ export class NoteApp extends React.Component {
         this.setState({ notes })
     }
 
+    handleLoadNotes = () => {
+        this.loadNotes();
+    }
+
     render() {
         const { notes } = this.state
         if(!notes) return <div>Loading Notes...</div>
@@ -28,7 +32,7 @@ export class NoteApp extends React.Component {
         return (
             <form className="notes-app">
                 <h1>Notes-App</h1>
-                <NoteAdd />
+                <NoteAdd handleLoadNotes={this.handleLoadNotes} />
                 <NoteList notes={notes} />
             </form>
         )

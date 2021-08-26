@@ -1,11 +1,13 @@
 
 
 .note-add {
-    width: 100%;
+    width: 50%;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     height: 60px;
+    max-width: 30%;
+    min-width: 350px;
 }
 
 .buttons-container {
@@ -32,18 +34,9 @@
     margin: 10px;
 }
 
-.note-add input[type=image] {
-    width: 38px;
-    height: 38px;
-}
 
-.note-add button {
-    width: 38px;
-    height: 38px;
-    align-items: center;
-}
 
-.note-add button img {
+.note-add img {
     width: 34px;
     height: 34px;
 }
