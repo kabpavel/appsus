@@ -38,6 +38,15 @@ const gEmails = [{
 
 function query(filterBy) {
     if (filterBy) {
+        console.log('filterBy', filterBy);
+        console.log('gEmails', gEmails);
+        let { name } = filterBy
+
+        // maxPrice = maxPrice ? maxPrice : Infinity
+        // minPublishDate = minPublishDate ? minPublishDate : 0
+
+        const emailsToShow = gEmails.filter(email => email.name.includes(name)/*/ && email.publishedDate >= minPublishDate && email.listPrice.amount <= maxPrice/*/)
+        return Promise.resolve(emailsToShow)
     }
     console.log('gEmails', gEmails);
     return Promise.resolve(gEmails)
@@ -54,15 +63,15 @@ function deleteEmail(emailId) {
 
 function saveEmail(emailToEdit) {
     return emailToEdit.id ? _updateEmail(emailToEdit) : _addEmail(emailToEdit)
-    
+
 }
 
 
 function _addEmail(emailToEdit) {
-    const { firstname, lastname,emailaddress,subject, country, body ,to}=emailToEdit
-    var email = _createEmail( firstname+' '+ lastname,emailaddress,subject, body,to )
+    const { firstname, lastname, emailaddress, subject, country, body, to } = emailToEdit
+    var email = _createEmail(firstname + ' ' + lastname, emailaddress, subject, body, to)
     gEmails.unshift(email)
-    console.log('gMails',gEmails);
+    console.log('gMails', gEmails);
     _saveEmailToStorage();
     return Promise.resolve()
 }
@@ -92,7 +101,7 @@ function getNextemailId(emailId) {
     return gEmails[nextemailIdx].id
 }
 
-function _createEmail(name, emailAddress,subject,body,to) {
+function _createEmail(name, emailAddress, subject, body, to) {
     return {
         id: utilService.makeId(),
         name,
