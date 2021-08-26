@@ -1,6 +1,9 @@
 .note-list{
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    justify-content: space-around;
+    align-content: start;
+    margin: auto;   
+    /* gap: 15px; */
 
 }

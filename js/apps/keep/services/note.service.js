@@ -45,11 +45,12 @@ function isNoteExist(noteId) {
     return true
 }
 
-function addNote(note) {
+function addNote(type, isPinned, info, style) {
+    const note = _createNote(type, isPinned, info, style)
     gNotes.unshift(note)
     _saveNotesToStorage();
     return Promise.resolve()
-}
+} 
 
 function getNoteById(noteId) {
     var note = gNotes.find(note => noteId === note.id)
@@ -65,13 +66,13 @@ function updateNote(noteId, newNote) {
     return Promise.resolve()
 }
 
-function _createNote(id, type, isPinned, info, style) {
+function _createNote(type, isPinned, info, style) {
     return {
-        id: (id) || utilService.makeId(),
+        id: utilService.makeId(6),
         type,
-        isPinned,
+        isPinned: false,
         info,
-        style
+        style: { backgroundColor: utilService.getRandomColor() }
     }
 }
 
