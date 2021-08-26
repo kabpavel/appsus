@@ -8,6 +8,8 @@ class _AppHeader extends React.Component {
         content: ''
 
     }
+
+
     render() {
 
         const { isOpen } = this.state
@@ -19,9 +21,9 @@ class _AppHeader extends React.Component {
                 {/* <p>Cars Count: {this.state.carsCount}</p> */}
                 <nav onClick={() => {
                     this.setState({ isOpen: !isOpen })
-                }}>  <img className="header-icon" src="assert/SI03Q.png" alt="" />
+                }}>  <img className="header-icon" src="assets/SI03Q.png" alt="" />
 
-                    <div className="nav-container">
+                    <div className={isOpen ? "open nav-container":"close nav-container"}>
                         <NavLink activeClassName="my-active" className={isOpen ? "open home" : "close home"} exact to="/" >Home</NavLink>
                         <NavLink activeClassName="my-active" className={isOpen ? "open email" : "close email"} to="/email" >Email</NavLink>
                         <NavLink activeClassName="my-active" className={isOpen ? "open keep" : "close keep"} to="/note-app" >keep</NavLink>

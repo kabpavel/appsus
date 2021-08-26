@@ -1,7 +1,8 @@
 import { emailService } from '../services/email.service.js';
 import { EmailList } from '../cmps/email-list.jsx';
 // import { BookFilter } from '../cmps/BookFilter.jsx';
-import { EmailDetails } from '../cmps/email-details-cmp.jsx';
+import { EmailDetails } from '../cmps/email-preview-span.jsx';
+import { EmailCompose } from '../cmps/email-compose.jsx';
 // import { AddEmail } from '../cmps/add-email.jsx';
 const { NavLink, withRouter } = ReactRouterDOM
 
@@ -10,7 +11,8 @@ const { NavLink, withRouter } = ReactRouterDOM
         emails: [],
         filterBy: null,
         selectedEmail: null,
-        isOpen:false
+        isOpen:false,
+        writingMail:false
     }
     componentDidMount() {
         this.loadEmails();
@@ -23,6 +25,11 @@ const { NavLink, withRouter } = ReactRouterDOM
 
         });
     };
+    onAddMail=()=>{
+        console.log('whriting new mail');
+        this.setState({writingMail:!this.state.writingMail})
+
+    }
 
     onSetFilter = (filterBy) => {
         this.setState({ filterBy }, this.loadEmails);
@@ -33,33 +40,35 @@ const { NavLink, withRouter } = ReactRouterDOM
     };
 
     onDeleteEmail = (emailId) => {
-        bookService.deleteEmail(emailId)
+        emailService.deleteEmail(emailId)
         this.onSelectEmail(null)
         this.loadEmails()
     }
 
     render() {
-        const { isOpen,emails, selectedEmail } = this.state
+        const { isOpen,emails, selectedEmail ,writingMail} = this.state
         if (!emails.length) return <div>Loading...</div>
         return <section className="email-app">
-
             <nav className="email-nav-container" onClick={() => {
                     this.setState({ isOpen: !isOpen })
                 }}> <div className="email-nav-icon">☰</div>
-                    <div className="email-nav">
-                        <NavLink activeClassName="my-active" className={isOpen ? "open inbox" : "close inbox"} exact to="/email" >Inbox</NavLink>
-                        <NavLink activeClassName="my-active" className={isOpen ? "open starred" : "close starred"} to="/email/starred" >Starred</NavLink>
-                        <NavLink activeClassName="my-active" className={isOpen ? "open sent-mail" : "close sent-mail"} to="/email/sent-mail" >Sent Mail</NavLink>
-                        <NavLink activeClassName="my-active" className={isOpen ? "open drafts" : "close drafts"} to="/email/drafts" >Drafts</NavLink>
+                    <div className={isOpen ? "open email-nav": "close email-nav"}>
+                        <NavLink activeClassName="my-active" className="inbox block"  exact to="/email" >Inbox</NavLink>
+                        <NavLink activeClassName="my-active" className="starred block" to="/email/starred" >Starred</NavLink>
+                        <NavLink activeClassName="my-active" className="sent-mail block" to="/email/sent-mail" >Sent Mail</NavLink>
+                        <NavLink activeClassName="my-active" className="drafts block" to="/email/drafts" >Drafts</NavLink>
                     </div>
                 </nav>
                 <hr className="email-hr" />
             <React.Fragment>
                 {/* <AddEmail/> */}
                 {/* <EmailFilter onSetFilter={this.onSetFilter} /> */}
-                <EmailList emails={emails} onSelectEmail={this.onSelectEmail} onDeleteEmail={this.onDeleteEmail}  />
+              
+                <EmailList emails={emails} onSelectEmail={this.onSelectEmail} onBack={() => this.onSelectEmail(null)} onDeleteEmail={this.onDeleteEmail}  />
             </React.Fragment>
             {/* {selectedEmail && <EmailDetails email={selectedEmail} onDeleteEmail={this.onDeleteEmail} />} */}
+            <button className="new-mail-create-btn" onClick={this.onAddMail}><img  src="assets/new-mail-create.png" alt="writing-email" /></button>
+            {writingMail&&<EmailCompose emails={emails} onWritingMail={this.onAddMail}/>}
         </section>
     }
 }

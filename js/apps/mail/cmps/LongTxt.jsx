@@ -11,7 +11,7 @@ export class LongTxt extends React.Component {
             this.setState({ shownTxt: text })
         }
         else {
-            this.setState({ shownTxt: text.substr(1, 50) });
+            this.setState({ shownTxt: text.substr(0, 50) });
         }
     }
 

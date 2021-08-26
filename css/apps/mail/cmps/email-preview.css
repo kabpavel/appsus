@@ -1,43 +1,49 @@
-.email-hr{
-    background-color:rgb(206, 194, 194);
+.email-hr {
+    background-color: rgb(206, 194, 194);
     height: 2px;
     opacity: 0.5;
     margin: 0;
     border: none;
 }
 
-.description{
+.description {
     color: gray;
 }
 
-.email-preview{
+.email-preview {
     display: flex;
     /* gap:5px; */
     justify-content: space-between;
-/* align-items: center; */
+    /* align-items: center; */
 }
-.email-user-container{
+
+.email-user-container {
     align-items: center;
- display: flex;   
+    display: flex;
 }
-img{
-    max-width: 100px;
-    max-height: 100px;
+
+.user-picture {
+    border-radius: 2rem;
+    width: 50px;
+    margin: 10px;
+    /* height: 40px; */
 }
-.email-selected{
+
+.email-selected {
     background-color: rgb(246 246 246);
-
 }
 
-.email-preview-name{
+.email-preview-name {
     font-weight: 400;
     font-size: 1.2rem;
 }
-.email-preview-title{
+
+.email-preview-title {
     font-weight: 400;
     font-size: 1.2rem;
 }
-.email-clock{
-   color: blue; 
-   font-weight: 500;
+
+.email-clock {
+    color: blue;
+    font-weight: 500;
 }
