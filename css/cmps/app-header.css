@@ -11,8 +11,8 @@
 }
 
 .open {
-    
-    display: block;
+    opacity: 1;
+    /* display: block; */
 }
 
 .nav-container {
@@ -51,5 +51,5 @@
 }
 
 .close {
-    display: none;
+opacity: 0;
 }

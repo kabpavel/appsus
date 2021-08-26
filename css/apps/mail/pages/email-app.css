@@ -11,8 +11,26 @@
     /* align-items: center; */
 }
 
-
-.email-nav{
-    position: fixed;
+.email-nav {
+    display: flex;
+    /* position: relative; */
     left: 50px;
+}
+
+.block {
+    display: block;
+}
+
+.new-mail-create-btn {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background-color: inherit;
+    border: none;
+    z-index: 1;
+}
+
+.new-mail-create-btn img {
+    max-width: 50px;
+    /* background-color: inherit; */
 }

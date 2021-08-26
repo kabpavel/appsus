@@ -13,6 +13,20 @@ font-size: 2rem;
 color: gray;
 
 }
+.detailes-title-container{
+display: flex;
+justify-content: space-between;
+}
+.detailes-title-container button{
+    border: none;
+    align-items: center;
+    border-radius: 3rem;
+}
+
+.detailes-title-container button img{
+    max-width: 30px;
+    
+}
 .email-details-name span{
     color: black;
     font-weight: 600;

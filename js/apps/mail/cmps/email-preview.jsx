@@ -1,7 +1,8 @@
 const { Link } = ReactRouterDOM
 
 import { Clock } from '../../../cmps/clock.jsx';
-import { EmailDetails } from './email-details-cmp.jsx';
+import { emailService } from '../services/email.service.js';
+import { EmailDetails } from './email-preview-span.jsx';
 import { LongTxt } from './LongTxt.jsx';
 // import { LongTxt } from './LongTxt.jsx'
 
@@ -16,6 +17,7 @@ export class EmailPreview extends React.Component {
 
             const { email, onSelectEmail } = this.props
             onSelectEmail(email)
+            email.isRead=true
             this.setState({ selectedEmail: email })
         }
         else {
@@ -25,7 +27,7 @@ export class EmailPreview extends React.Component {
         }
     }
     render() {
-        const { email, onDeleteEmail } = this.props
+        const { email,onBack, onDeleteEmail } = this.props
         const { selectedEmail } = this.state
         return (
             <Link to={`/email/${email.id}`} >
@@ -35,11 +37,11 @@ export class EmailPreview extends React.Component {
                 }} className={selectedEmail?"email-preview email-selected":"email-preview"}>
                   
                     <div className="email-user-container">
-                        <img src="assert/Circle-Line.ico" alt="" />
+                        <img className="user-picture" src="assets/unnamed.png" alt="user-pic" />
                         <div>
                         <h4 className="email-preview-name"> {email.name}</h4>
-                        <h4 className="email-preview-title"> {email.title}</h4>
-                        <LongTxt text={email.content} />
+                        <h4 className="email-preview-title"> {email.subject}</h4>
+                        <LongTxt text={email.body} />
                         </div>
                     </div>
                     <div className="email-clock">
@@ -48,7 +50,7 @@ export class EmailPreview extends React.Component {
              
                 </article>
                 <hr className="email-hr" />
-                {selectedEmail && <EmailDetails email={email} onDeleteEmail={onDeleteEmail} />}
+                {selectedEmail && <EmailDetails email={email} onBack={onBack} onDeleteEmail={onDeleteEmail} />}
             </Link>
         )
     }

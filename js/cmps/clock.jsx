@@ -13,11 +13,16 @@ export class Clock extends React.Component {
     }
     render() {
         const { time } = this.state
-        const hour = time.getHours() > 10 ? time.getHours() : '0' + time.getHours();
-        const minutes = time.getMinutes() > 10 ? time.getMinutes() : '0' + time.getMinutes();
+        let hour = time.getHours() >= 10 ? time.getHours() : '0' + time.getHours();
+        let minutes = time.getMinutes() >= 10 ? time.getMinutes() : '0' + time.getMinutes();
+        let amPm ='AM' 
+        if(hour>12){
+            hour-=12
+            amPm='PM'
+        }
 
         return <div className="clock-container">
-            {hour+':'+minutes}
+            {hour+':'+minutes+' '+amPm}
         </div>
     }
 }
