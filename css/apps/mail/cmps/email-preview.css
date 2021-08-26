@@ -2,19 +2,41 @@
     background-color:rgb(206, 194, 194);
     height: 2px;
     opacity: 0.5;
+    margin: 0;
+    border: none;
 }
 
+.description{
+    color: gray;
+}
 
 .email-preview{
     display: flex;
-    gap:5px;
+    /* gap:5px; */
     justify-content: space-between;
 /* align-items: center; */
 }
-.email-preview>*:not(:last-child){
-    border-right: 1px solid gray;
+.email-user-container{
+    align-items: center;
+ display: flex;   
+}
+img{
+    max-width: 100px;
+    max-height: 100px;
+}
+.email-selected{
+    background-color: rgb(246 246 246);
+
 }
 
+.email-preview-name{
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+.email-preview-title{
+    font-weight: 400;
+    font-size: 1.2rem;
+}
 .email-clock{
    color: blue; 
    font-weight: 500;

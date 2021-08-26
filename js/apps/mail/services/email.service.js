@@ -13,12 +13,15 @@ const KEY = 'emails';
 const gEmail = [{
         id: 1,
         name:'itay',
+        emailAddress: 'itay@gmail.com',
         title: 'normally i stay up late',
-        content: 'but then .........KEY.anchor.'
+        content: `Text messaging, or texting, is the act of composing and sending electronic messages, typically consisting of alphabetic and numeric characters, between two or more users of mobile devices, desktops/laptops, or other type of compatible computer.
+         Text messages may be sent over a cellular network, or may also be sent via an Internet connection.`
     },
     {
         id: 2,
         name:'itay',
+        emailAddress: 'itay@walla.com',
         title: 'normally i stay up late',
         content: 'but then .........KEY.anchor.'
     }

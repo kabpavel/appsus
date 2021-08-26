@@ -1,7 +1,7 @@
 import { emailService } from '../services/email.service.js';
 import { EmailList } from '../cmps/email-list.jsx';
 // import { BookFilter } from '../cmps/BookFilter.jsx';
-import { EmailDetails } from '../cmps/email-details.jsx';
+import { EmailDetails } from '../cmps/email-details-cmp.jsx';
 // import { AddEmail } from '../cmps/add-email.jsx';
 const { NavLink, withRouter } = ReactRouterDOM
 
