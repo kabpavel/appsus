@@ -1,7 +1,7 @@
 import { noteService } from '../services/note.service.js';
 import { NoteList } from '../cmps/note-list.jsx';
 import { NoteAdd } from '../cmps/note-add.jsx';
- 
+
 export class NoteApp extends React.Component {
 
     state = {
@@ -17,7 +17,7 @@ export class NoteApp extends React.Component {
         // noteService.query(this.state.filterBy).then((notesToShow) => {
         //     this.setState({ notesToShow })
         // })
-        const  notes = noteService.query()
+        const notes = noteService.query()
         this.setState({ notes })
     }
 
@@ -25,15 +25,20 @@ export class NoteApp extends React.Component {
         this.loadNotes();
     }
 
+    onDeleteNote = (id) => {
+        noteService.deleteNote(id).then(
+            () => { this.loadNotes() }
+        )
+    }
+
     render() {
         const { notes } = this.state
-        if(!notes) return <div>Loading Notes...</div>
+        if (!notes) return <div>Loading Notes...</div>
 
         return (
             <form className="notes-app">
-                <h1>Notes-App</h1>
                 <NoteAdd handleLoadNotes={this.handleLoadNotes} />
-                <NoteList notes={notes} />
+                <NoteList notes={notes} onDeleteNote={this.onDeleteNote} />
             </form>
         )
     }

@@ -56,7 +56,7 @@ export class NoteAdd extends React.Component {
                 if (todosList.length === 0) return //todo message
                 const todos = []
                 todosList.forEach((todo, idx) => {
-                    if (idx != 0) todos.push({ txt: todo, doneAt: null })
+                    todos.push({ id: idx, txt: todo, doneAt: null })
                 })
                 info = { label: infoList[0], todos }
 
