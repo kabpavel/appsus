@@ -24,10 +24,10 @@ class _AppHeader extends React.Component {
                 }}>  <img className="header-icon" src="assets/SI03Q.png" alt="" />
 
                     <div className={isOpen ? "open nav-container":"close nav-container"}>
-                        <NavLink activeClassName="my-active" className={isOpen ? "open home" : "close home"} exact to="/" >Home</NavLink>
-                        <NavLink activeClassName="my-active" className={isOpen ? "open email" : "close email"} to="/email" >Email</NavLink>
-                        <NavLink activeClassName="my-active" className={isOpen ? "open keep" : "close keep"} to="/note-app" >keep</NavLink>
-                        <NavLink activeClassName="my-active" className={isOpen ? "open book" : "close book"} to="/miss-book" >Books</NavLink>
+                        <NavLink activeClassName="my-active" className={isOpen ? "open home" : "close home"} exact to="/" >🏠</NavLink>
+                        <NavLink activeClassName="my-active" className={isOpen ? "open email" : "close email"} to="/email" >📧</NavLink>
+                        <NavLink activeClassName="my-active" className={isOpen ? "open keep" : "close keep"} to="/note-app" >📜</NavLink>
+                        <NavLink activeClassName="my-active" className={isOpen ? "open book" : "close book"} to="/miss-book" >📚</NavLink>
                         <NavLink activeClassName="my-active" className={isOpen ? "open about" : "close about"} to="/about" >About</NavLink>
                     </div>
                 </nav>

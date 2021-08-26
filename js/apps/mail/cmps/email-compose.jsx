@@ -33,11 +33,11 @@ export class EmailCompose extends React.Component {
         const { onWritingMail, email } = this.props
         return (
 
-            <div className="container">
+            <div className="compose-email-container">
                 <button className="exit" onClick={() => {
                     onWritingMail()
                 }
-                }>X</button>
+                }> <img src="assets/delete.png" alt="" /> </button>
                 <form onSubmit={this.handleSubmit}>
 
                     <label htmlFor="to">To</label>

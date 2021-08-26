@@ -1,10 +1,16 @@
-.footer-container{
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    /* width: 50%; */
-    /* border: 3px solid #8AC007; */
-  height:10vh;
-    background-color: gray;
-    opacity: 0.3;
+.footer-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  /* width: 50%; */
+  /* border: 3px solid #8AC007; */
+  height: 10vh;
+  background-color: gray;
+  opacity: 0.3;
+}
+
+@media (min-width: 768px) {
+  .footer-container {
+    background-color: white;
+  }
 }
