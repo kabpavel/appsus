@@ -15,7 +15,7 @@
 @import '../css/apps/keep/cmps/note-add.css';
 @import '../css/apps/keep/pages/note-details.css';
 @import '../css/apps/keep/pages/note-index.css';
-
+@import '../css/apps/keep/cmps/note-to-trash.css';
 
 @import '../css/apps/mail/cmps/email-compose.css';
 @import '../css/apps/mail/cmps/email-filter.css';
