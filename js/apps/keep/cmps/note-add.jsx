@@ -52,7 +52,7 @@ export class NoteAdd extends React.Component {
         let info = ''
         switch (type) {
             case 'note-txt':
-                console.log('title: inputTitle, txt: inputText',inputTitle, inputText)
+                console.log('title: inputTitle, txt: inputText', inputTitle, inputText)
 
                 info = { title: inputTitle, txt: inputText }
                 break
@@ -112,6 +112,25 @@ export class NoteAdd extends React.Component {
         }
     }
 
+    inputTextType = () => {
+        const { type } = this.state
+        switch (type) {
+            case 'note-txt':
+                return 'Text:  '
+            case 'note-todos':
+                return 'Todos: '
+            case 'note-audio':
+                return 'URL:   '
+            case 'note-img':
+                return 'URL:   '
+            case 'note-video':
+                return 'URL:   '
+            default:
+                return ''
+        }
+    }
+
+
     addSelect = (type) => {
         return (type === this.state.type) ? '_select' : ''
     }
@@ -123,13 +142,16 @@ export class NoteAdd extends React.Component {
         return (
             <section className="note-add-container">
                 <div className="note-add">
-                    <div className="input-container">
+                    <div className="input-container flex justify-space-between">
                         <label htmlFor="input-title">Title: </label>
-                        <input className="input-title" type="text" id="input-title" name="input-title" autocomplete="off" placeholder="Enter title" value={inputTitle} onChange={this.handleChange} />
-                        <label htmlFor="input-text">Data: </label>
-                        <input className="input-text" type="text" id="input-text" name="input-text" autocomplete="off" placeholder={`${this.placeholder()}`} value={inputText} onChange={this.handleChange} />
+                        <input className="input-title" type="text" id="input-title" name="input-title" autocomplete="off" 
+                        placeholder="Enter title" value={inputTitle} onChange={this.handleChange} />
                     </div>
-
+                    <div className="input-container flex justify-space-between">
+                        <label htmlFor="input-text">{`${this.inputTextType()}`}</label>
+                        <input className="input-text" type="text" id="input-text" name="input-text" autocomplete="off" 
+                        placeholder={`${this.placeholder()}`} value={inputText} onChange={this.handleChange} />
+                    </div>
                     <div className="buttons-container">
                         <ImageHover className="note-txt" name="note-txt" onHoverSrc="../js/apps/keep/img/note-txt_select.png"
                             onRegularSrc={`../js/apps/keep/img/note-txt${this.addSelect('note-txt')}.png`} onClick={this.handleChange} />

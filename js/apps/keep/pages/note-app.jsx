@@ -1,6 +1,7 @@
 import { noteService } from '../services/note.service.js';
 import { NoteList } from '../cmps/note-list.jsx';
 import { NoteAdd } from '../cmps/note-add.jsx';
+import { NoteFilter } from '../cmps/note-filter.jsx';
 
 export class NoteApp extends React.Component {
 
@@ -13,13 +14,34 @@ export class NoteApp extends React.Component {
         this.loadNotes();
     }
 
+    // loadNotes = () => {
+    //     // noteService.query(this.state.filterBy).then((notesToShow) => {
+    //     //     this.setState({ notesToShow })
+    //     // })
+    //     const notes = noteService.query()
+    //     this.setState({ notes })
+    // }
+
     loadNotes = () => {
-        // noteService.query(this.state.filterBy).then((notesToShow) => {
-        //     this.setState({ notesToShow })
-        // })
-        const notes = noteService.query()
-        this.setState({ notes })
-    }
+        //debugger
+        noteService.query(this.state.filterBy).then((notes) => {
+            this.setState({ notes })
+        })
+
+        //const notes = noteService.query()
+        //this.setState({ notes })
+
+        // carService.query(this.state.filterBy).then((cars) => {
+        //     eventBusService.emit('cars-count', cars.length)
+        //     this.setState({ cars });
+        // });
+    };
+
+    onSetFilter = (filterBy) => {
+        //debugger
+        this.setState({ filterBy }, this.loadNotes);
+    };
+
 
     handleLoadNotes = () => {
         this.loadNotes();
@@ -38,7 +60,8 @@ export class NoteApp extends React.Component {
         return (
             <form className="notes-app">
                 <NoteAdd handleLoadNotes={this.handleLoadNotes} />
-                <NoteList notes={notes} onDeleteNote={this.onDeleteNote}/>
+                <NoteFilter onSetFilter={this.onSetFilter} />
+                <NoteList notes={notes} onDeleteNote={this.onDeleteNote} />
             </form>
         )
     }

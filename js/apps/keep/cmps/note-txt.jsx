@@ -1,6 +1,7 @@
 import { NoteToTrash } from '../cmps/note-to-trash.jsx';
 import { NoteTitleEdit } from './note-title-edit.jsx';
 import { NoteTextEdit } from './note-text-edit.jsx';
+import { ColorPicker } from './color-picker.jsx';
 
 export class NoteTxt extends React.Component {
 
@@ -18,7 +19,10 @@ export class NoteTxt extends React.Component {
                     {/* <h2 className="info-title">{note.info.title}</h2> */}
                     <NoteTextEdit noteId={note.id} text={note.info.txt} />
                 </div>
-                <NoteToTrash note={note} onDeleteNote={onDeleteNote} />
+                <div className="flex">
+                    <NoteToTrash note={note} onDeleteNote={onDeleteNote} />
+                    <ColorPicker note={note} />
+                </div>
             </div>
         )
     }

@@ -65,7 +65,7 @@ export class _NoteTitleEdit extends React.Component {
             <React.Fragment>
                 {!isEdit &&
                     <section className="note-title">
-                        <div>{title}</div>
+                        <div className="text-transform-none">{title}</div>
                         <ImageHover className="img-edit-title" name="edit-title" onHoverSrc="../js/apps/keep/img/edit-note_select.png"
                             onRegularSrc={`../js/apps/keep/img/edit-note.png`} onClick={this.toggleEditStatus} />
                     </section>

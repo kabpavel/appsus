@@ -1,0 +1,21 @@
+.note-filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #E8E8E8;
+    min-width: 100%;
+    width: 100px;
+    height: 80px;
+    /* min-width: 375px; */
+    padding: 10px;
+    margin: 10px;
+}
+
+.note-filter {
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    height: 60px;
+    max-width: 30%;
+    min-width: 350px;
+}
