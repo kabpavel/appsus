@@ -120,7 +120,7 @@ function updateNoteText(noteId, text) {
 function updateTodo(noteId, todoId, doneAt) {
     //debugger
 
-    console.log('updateTodo(noteId, todoId, doneAt)', noteId, todoId, doneAt)
+    //console.log('updateTodo(noteId, todoId, doneAt)', noteId, todoId, doneAt)
 
     const noteIdx = gNotes.findIndex(note => noteId === note.id)
 

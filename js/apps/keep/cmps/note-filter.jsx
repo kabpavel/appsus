@@ -12,7 +12,7 @@ export class NoteFilter extends React.Component {
         const field = ev.target.name;
         const value = ev.target.type === 'number' ? +ev.target.value : ev.target.value;
         this.setState({ filterBy: { ...this.state.filterBy, [field]: value } }, () => {
-            console.log('this.state.filterBy', this.state.filterBy);
+            //console.log('this.state.filterBy', this.state.filterBy);
             this.props.onSetFilter(this.state.filterBy)
         });
     };
@@ -20,7 +20,7 @@ export class NoteFilter extends React.Component {
     onFilter = (ev) => {
         //debugger
         ev.preventDefault();
-        console.log(this.state.filterBy);
+        //console.log(this.state.filterBy);
         this.props.onSetFilter(this.state.filterBy)
     };
 

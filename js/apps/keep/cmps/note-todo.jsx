@@ -10,7 +10,7 @@ export class NoteTodo extends React.Component {
         const { todo } = this.props
         //debugger
         const isChecked = (!todo.doneAt) ? false : true
-        console.log('const isChecked = (!todo.doneAt) ? false : true', (!todo.doneAt) ? false : true)
+        //console.log('const isChecked = (!todo.doneAt) ? false : true', (!todo.doneAt) ? false : true)
 
 
         this.setState({ isChecked })
@@ -24,7 +24,7 @@ export class NoteTodo extends React.Component {
         const newIsChecked = !isChecked
 
 
-        console.log('handleOnTodoChecked - newIsChecked', newIsChecked, 'defaultChecked', defaultChecked)
+        //console.log('handleOnTodoChecked - newIsChecked', newIsChecked, 'defaultChecked', defaultChecked)
 
         const todoId = id.split('-')[1]
         const { noteId } = this.props
@@ -45,7 +45,7 @@ export class NoteTodo extends React.Component {
         if (!todo) return <div>Loading todo...</div>
         //debugger
 
-        console.log(' render() - const { isChecked } = this.state', isChecked);
+        //console.log(' render() - const { isChecked } = this.state', isChecked);
 
         return (
             <span><input type="checkbox" id={`todo-${todo.id}`} name={`todo-${todo.id}`}

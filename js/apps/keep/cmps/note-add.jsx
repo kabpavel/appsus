@@ -19,10 +19,10 @@ export class NoteAdd extends React.Component {
     }
 
     handleChange = (ev) => {
-        console.log('handleChange')
-        console.log('ev.target.name', ev.target.name)
-        console.log('ev.target.type', ev.target.type)
-        console.log('ev.target.value', ev.target.value)
+        //console.log('handleChange')
+        //console.log('ev.target.name', ev.target.name)
+        //console.log('ev.target.type', ev.target.type)
+        //console.log('ev.target.value', ev.target.value)
 
         if (ev.target.name === 'input-text') {
             const inputText = ev.target.value
