@@ -1,4 +1,5 @@
 import { NoteToTrash } from '../cmps/note-to-trash.jsx';
+import { NoteTitleEdit } from './note-title-edit.jsx';
 
 export class NoteImg extends React.Component {
 
@@ -9,7 +10,8 @@ export class NoteImg extends React.Component {
         return (
             <div className="note-container" >
                 <div className="note-preview-container" style={note.style}>
-                    <h2 className="info-title">{note.info.title}</h2>
+                    {/* <h2 className="info-title">{note.info.title}</h2> */}
+                    <NoteTitleEdit noteId={note.id} title={note.info.title} />
                     <img src={note.info.url} alt="" />
                 </div>
                 <NoteToTrash note={note} onDeleteNote={onDeleteNote} />

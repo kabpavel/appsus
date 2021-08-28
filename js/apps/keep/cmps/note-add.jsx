@@ -1,6 +1,7 @@
 
 import { noteService } from '../services/note.service.js';
 import { ImageHover } from "./image-hover.jsx"
+import { utilService } from '../../../util.service.js';
 
 export class NoteAdd extends React.Component {
 
@@ -36,50 +37,52 @@ export class NoteAdd extends React.Component {
         }
 
         const type = ev.target.name
-        this.setState({ type })
+        this.setState({ type, inputText: '', inputTitle: '' })
     }
 
     onSave = (ev) => {
         ev.preventDefault()
-        console.log('onSave')
-        const { type, inputText } = this.state
+        const { type, inputTitle, inputText } = this.state
 
+        //todo message
+        if (!inputTitle) return
         if (!inputText) return
-        const infoList = inputText.split('|')
-        if (!infoList) return//todo message
+
 
         let info = ''
         switch (type) {
             case 'note-txt':
-                info = { txt: infoList[0] }
+                console.log('title: inputTitle, txt: inputText',inputTitle, inputText)
+
+                info = { title: inputTitle, txt: inputText }
                 break
+
             case 'note-audio':
-                if (infoList.length !== 2) return //todo message
-                info = { title: infoList[0], url: infoList[1] }
+                info = { title: inputTitle, url: inputText }
                 break
+
             case 'note-todos':
-                if (infoList.length !== 2) return //todo message
                 const todosList = inputText.split(',')
                 if (todosList.length === 0) return //todo message
                 const todos = []
-                todosList.forEach((todo, idx) => {
-                    todos.push({ id: idx, txt: todo, doneAt: null })
+                todosList.forEach((todo) => {
+                    todos.push({ id: utilService.makeId(6), txt: todo, doneAt: null })
                 })
-                info = { label: infoList[0], todos }
+                info = { label: inputTitle, todos }
+                break
 
-                break
             case 'note-img':
-                if (infoList.length !== 2) return //todo message
-                info = { title: infoList[0], url: infoList[1] }
+                info = { title: inputTitle, url: inputText }
                 break
+
             case 'note-video':
-                if (infoList.length !== 2) return //todo message
-                info = { title: infoList[0], url: infoList[1] }
+                info = { title: inputTitle, url: inputText }
                 break
+
             default:
                 return ''
         }
-        console.log('info', info)
+        //console.log('info', info)
 
         noteService.addNote(type, false, info, '')
             .then(() => {
@@ -126,7 +129,7 @@ export class NoteAdd extends React.Component {
                         <label htmlFor="input-text">Data: </label>
                         <input className="input-text" type="text" id="input-text" name="input-text" autocomplete="off" placeholder={`${this.placeholder()}`} value={inputText} onChange={this.handleChange} />
                     </div>
-                    
+
                     <div className="buttons-container">
                         <ImageHover className="note-txt" name="note-txt" onHoverSrc="../js/apps/keep/img/note-txt_select.png"
                             onRegularSrc={`../js/apps/keep/img/note-txt${this.addSelect('note-txt')}.png`} onClick={this.handleChange} />

@@ -8,7 +8,9 @@ export const noteService = {
     getNoteById,
     updateNote,
     isNoteExist,
-    updateNoteTitle
+    updateNoteTitle,
+    updateNoteText,
+    updateTodo
 }
 
 const KEY = 'notes';
@@ -92,9 +94,32 @@ function _saveNotesToStorage() {
 
 
 function updateNoteTitle(noteId, title, isTodos) {
+    //debugger
     const idx = gNotes.findIndex(note => noteId === note.id)
     if(!isTodos) gNotes[idx].info.title = title
     else gNotes[idx].info.label = title
+    _saveNotesToStorage();
+    return Promise.resolve()
+}
+
+function updateNoteText(noteId, text) {
+    //debugger
+    const idx = gNotes.findIndex(note => noteId === note.id)
+    gNotes[idx].info.txt = text
+    _saveNotesToStorage();
+    return Promise.resolve()
+}
+
+function updateTodo(noteId, todoId, doneAt) {
+    //debugger
+
+    console.log('updateTodo(noteId, todoId, doneAt)',noteId, todoId, doneAt)
+
+    const noteIdx = gNotes.findIndex(note => noteId === note.id)
+    
+    const todoIdx = gNotes[noteIdx].info.todos.findIndex(todo => todoId === todo.id)
+    gNotes[noteIdx].info.todos[todoIdx].doneAt = (!doneAt) ? null : doneAt
+
     _saveNotesToStorage();
     return Promise.resolve()
 }
@@ -128,9 +153,11 @@ function getTempNotes() {
         info: {
             label: "Get my stuff together",
             todos: [{
+                id: "t101",
                 txt: "Driving liscence",
                 doneAt: null
             }, {
+                id: "t102",
                 txt: "Coding power",
                 doneAt: 187111111
             }
@@ -177,9 +204,11 @@ function getTempNotes() {
         info: {
             label: "Get my stuff together",
             todos: [{
+                id: "t103",
                 txt: "Driving liscence",
                 doneAt: null
             }, {
+                id: "t104",
                 txt: "Coding power",
                 doneAt: 187111111
             }

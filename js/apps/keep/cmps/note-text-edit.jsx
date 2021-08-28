@@ -2,19 +2,14 @@ import { noteService } from "../services/note.service.js"
 const { withRouter } = ReactRouterDOM
 import { ImageHover } from "./image-hover.jsx"
 
-export class _NoteTitleEdit extends React.Component {
+export class _NoteTextEdit extends React.Component {
 
     state = {
         isEdit: false,
-        editTitle: '',
-        isTodos: false
+        editText: ''
     }
 
     isFirstToggle = true
-
-    componentDidMount() {
-        if (this.props.todos) this.setState({ isTodos: true })
-    }
 
     toggleEditStatus = () => {
         const isEdit = this.state.isEdit
@@ -23,30 +18,30 @@ export class _NoteTitleEdit extends React.Component {
 
     handleOnChange = (ev) => {
         this.isFirstToggle = false
-        const editTitle = ev.target.value
-        this.setState({ editTitle })
+        const editText = ev.target.value
+        this.setState({ editText })
     }
 
     onCancelEdit = () => {
         this.isFirstToggle = true
-        this.setState({ isEdit: false, editTitle: '' })
+        this.setState({ isEdit: false, editText: '' })
     }
 
-    onSaveNewTitle = () => {
-        const { editTitle, isTodos } = this.state
+    onSaveNewText = () => {
+        const { editText } = this.state
         const { noteId } = this.props
 
         this.isFirstToggle = true
 
         //debugger
-        if (!editTitle) {
+        if (!editText) {
             this.toggleEditStatus();
             return
         }
-        noteService.updateNoteTitle(noteId, editTitle, isTodos)
+        noteService.updateNoteText(noteId, editText)
             .then(() => {
                 //todo message
-                this.setState({ isEdit: false, editTitle: '' })
+                this.setState({ isEdit: false, editText: '' })
                 this.props.history.push('/note-app')
             })
 
@@ -54,29 +49,32 @@ export class _NoteTitleEdit extends React.Component {
     }
 
     render() {
-        const { title } = this.props
-        const { isEdit, editTitle } = this.state
+        const { text } = this.props
+        const { isEdit, editText } = this.state
 
-        console.log('title', title)
-        //console.log('isEdit', isEdit)
-        //console.log('editTitle', editTitle)
+        //console.log('text',text)
+        //console.log('isEdit',isEdit)
+        //console.log('editText',editText)
 
         return (
             <React.Fragment>
                 {!isEdit &&
-                    <section className="note-title">
-                        <div>{title}</div>
+                    <section className="note-text">
+                        <p>{text}</p>
                         <ImageHover className="img-edit-title" name="edit-title" onHoverSrc="../js/apps/keep/img/edit-note_select.png"
                             onRegularSrc={`../js/apps/keep/img/edit-note.png`} onClick={this.toggleEditStatus} />
                     </section>
                 }
                 {isEdit &&
-                    <section className="note-title">
-                        <input className="note-title-edit-input" type="text" name="editTitle" value={(!this.isFirstToggle) ? editTitle : title} 
-                               onChange={this.handleOnChange} autocorrect="off" autocapitalize="none" />
+                    <section className="note-text">
+                        <textarea className="note-text-edit-input" type="text" name="editText" value={(!this.isFirstToggle) ? editText : text} onChange={this.handleOnChange} ></textarea>
+
+                        {/* <input className="note-text-edit-input" type="text" name="editText" value={(!this.isFirstToggle) ? editText : text} onChange={this.handleOnChange} /> */}
+                        
                         <div>
+
                             <ImageHover className="img-save-edit" name="save-edit" onHoverSrc="../js/apps/keep/img/ok_select.png"
-                                onRegularSrc={`../js/apps/keep/img/ok.png`} onClick={this.onSaveNewTitle} />
+                                onRegularSrc={`../js/apps/keep/img/ok.png`} onClick={this.onSaveNewText} />
 
                             <ImageHover className="img-cancel-edit" name="cancel-edit" onHoverSrc="../js/apps/keep/img/cancel_select.png"
                                 onRegularSrc={`../js/apps/keep/img/cancel.png`} onClick={this.onCancelEdit} />
@@ -88,5 +86,4 @@ export class _NoteTitleEdit extends React.Component {
     }
 }
 
-
-export const NoteTitleEdit = withRouter(_NoteTitleEdit)
+export const NoteTextEdit = withRouter(_NoteTextEdit)

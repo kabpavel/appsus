@@ -34,11 +34,11 @@ export class NoteApp extends React.Component {
     render() {
         const { notes } = this.state
         if (!notes) return <div>Loading Notes...</div>
-
+        //console.log('notes',notes)
         return (
             <form className="notes-app">
                 <NoteAdd handleLoadNotes={this.handleLoadNotes} />
-                <NoteList notes={notes} onDeleteNote={this.onDeleteNote} />
+                <NoteList notes={notes} onDeleteNote={this.onDeleteNote}/>
             </form>
         )
     }
