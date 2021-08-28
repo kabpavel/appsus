@@ -87,7 +87,8 @@ export class NoteAdd extends React.Component {
         noteService.addNote(type, false, info, '')
             .then(() => {
                 const inputText = ''
-                this.setState({ inputText })
+                const inputTitle = ''
+                this.setState({ inputText, inputTitle })
             }).then(() => {
                 const { handleLoadNotes } = this.props
                 handleLoadNotes()

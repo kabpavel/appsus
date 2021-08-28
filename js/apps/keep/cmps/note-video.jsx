@@ -14,7 +14,7 @@ export class NoteVideo extends React.Component {
                 <div className="note-preview-container" style={note.style}>
                     {/* <h2 className="info-title">{note.info.title}</h2> */}
                     <NoteTitleEdit noteId={note.id} title={note.info.title} />
-                    <iframe width="305" src={note.info.url}></iframe>
+                    <iframe width="335" src={note.info.url}></iframe>
                 </div>
                 <div className="flex align-center">
                     <NoteToTrash note={note} onDeleteNote={onDeleteNote} />

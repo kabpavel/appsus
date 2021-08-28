@@ -24,7 +24,8 @@
   background-color: rgb(206, 194, 194);
   box-shadow: 1px 0px 6px 0px rgb(136, 114, 114);
   border-radius: 35px;
- 
+  font-family: Poppins-Regular;
+  /* font-family: Poppins-Regular, Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif */
   padding: 10px;
 }
 
@@ -37,7 +38,7 @@
 }
 
 .note-preview-container img {
-  width: 305px;
+  width: 335px;
 }
 
 .note-title div {

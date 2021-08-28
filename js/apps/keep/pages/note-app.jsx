@@ -14,31 +14,13 @@ export class NoteApp extends React.Component {
         this.loadNotes();
     }
 
-    // loadNotes = () => {
-    //     // noteService.query(this.state.filterBy).then((notesToShow) => {
-    //     //     this.setState({ notesToShow })
-    //     // })
-    //     const notes = noteService.query()
-    //     this.setState({ notes })
-    // }
-
     loadNotes = () => {
-        //debugger
         noteService.query(this.state.filterBy).then((notes) => {
             this.setState({ notes })
         })
-
-        //const notes = noteService.query()
-        //this.setState({ notes })
-
-        // carService.query(this.state.filterBy).then((cars) => {
-        //     eventBusService.emit('cars-count', cars.length)
-        //     this.setState({ cars });
-        // });
     };
 
     onSetFilter = (filterBy) => {
-        //debugger
         this.setState({ filterBy }, this.loadNotes);
     };
 
