@@ -153,17 +153,16 @@ export class NoteAdd extends React.Component {
                         placeholder={`${this.placeholder()}`} value={inputText} onChange={this.handleChange} />
                     </div>
                     <div className="buttons-container">
-                        <ImageHover className="note-txt" name="note-txt" onHoverSrc="../js/apps/keep/img/note-txt_select.png"
-                            onRegularSrc={`../js/apps/keep/img/note-txt${this.addSelect('note-txt')}.png`} onClick={this.handleChange} />
-                        {/* <img onClick={this.handleChange} name="note-audio" src={`../js/apps/keep/img/note-audio${this.addSelect('note-audio')}.png`} alt="" /> */}
-                        <ImageHover className="note-todos" name="note-todos" onHoverSrc="../js/apps/keep/img/note-todos_select.png"
-                            onRegularSrc={`../js/apps/keep/img/note-todos${this.addSelect('note-todos')}.png`} onClick={this.handleChange} />
-                        <ImageHover className="note-img" name="note-img" onHoverSrc="../js/apps/keep/img/note-img_select.png"
-                            onRegularSrc={`../js/apps/keep/img/note-img${this.addSelect('note-img')}.png`} onClick={this.handleChange} />
-                        <ImageHover className="note-video" name="note-video" onHoverSrc="../js/apps/keep/img/note-video_select.png"
-                            onRegularSrc={`../js/apps/keep/img/note-video${this.addSelect('note-video')}.png`} onClick={this.handleChange} />
-                        <ImageHover className="note-save" name="note-save" onHoverSrc={'../js/apps/keep/img/save_hover.png'}
-                            onRegularSrc={'../js/apps/keep/img/save.png'} onClick={this.onSave} />
+                        <ImageHover className="note-txt" name="note-txt" onHoverSrc="js/apps/keep/img/note-txt_select.png"
+                            onRegularSrc={`js/apps/keep/img/note-txt${this.addSelect('note-txt')}.png`} onClick={this.handleChange} />
+                        <ImageHover className="note-todos" name="note-todos" onHoverSrc="js/apps/keep/img/note-todos_select.png"
+                            onRegularSrc={`js/apps/keep/img/note-todos${this.addSelect('note-todos')}.png`} onClick={this.handleChange} />
+                        <ImageHover className="note-img" name="note-img" onHoverSrc="js/apps/keep/img/note-img_select.png"
+                            onRegularSrc={`js/apps/keep/img/note-img${this.addSelect('note-img')}.png`} onClick={this.handleChange} />
+                        <ImageHover className="note-video" name="note-video" onHoverSrc="js/apps/keep/img/note-video_select.png"
+                            onRegularSrc={`js/apps/keep/img/note-video${this.addSelect('note-video')}.png`} onClick={this.handleChange} />
+                        <ImageHover className="note-save" name="note-save" onHoverSrc={'js/apps/keep/img/save_hover.png'}
+                            onRegularSrc={'js/apps/keep/img/save.png'} onClick={this.onSave} />
                     </div>
                 </div>
             </section>

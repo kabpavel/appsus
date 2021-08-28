@@ -20,12 +20,6 @@ export class _ColorPicker extends React.Component {
     const { style } = this.props.note
     //debugger
     return (
-      // <ImageHover className="img-note-to-trash toTop"
-      //   name="trash"
-      //   onHoverSrc="../js/apps/keep/img/color-pick_select.png"
-      //   onRegularSrc="../js/apps/keep/img/color-pick.png"
-      //   onClick={this.onClick} >
-      //   </ImageHover>
       <input type="color" class="note-color-style" value={style.backgroundColor} onChange={this.onChange} ></input>
     )
   }
