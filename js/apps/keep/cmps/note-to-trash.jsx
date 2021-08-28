@@ -12,8 +12,8 @@ export class NoteToTrash extends React.Component {
         return (
             <ImageHover className="img-note-to-trash toTop"
                 name="trash"
-                onHoverSrc="../js/apps/keep/img/deleteOpen.png"
-                onRegularSrc="../js/apps/keep/img/delete.png"
+                onHoverSrc="js/apps/keep/img/deleteOpen.png"
+                onRegularSrc="js/apps/keep/img/delete.png"
                 onClick={this.onClick} />
         )
     }

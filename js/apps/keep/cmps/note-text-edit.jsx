@@ -61,8 +61,8 @@ export class _NoteTextEdit extends React.Component {
                 {!isEdit &&
                     <section className="note-text">
                         <p>{text}</p>
-                        <ImageHover className="img-edit-title" name="edit-title" onHoverSrc="../js/apps/keep/img/edit-note_select.png"
-                            onRegularSrc={`../js/apps/keep/img/edit-note.png`} onClick={this.toggleEditStatus} />
+                        <ImageHover className="img-edit-title" name="edit-title" onHoverSrc="js/apps/keep/img/edit-note_select.png"
+                            onRegularSrc={`js/apps/keep/img/edit-note.png`} onClick={this.toggleEditStatus} />
                     </section>
                 }
                 {isEdit &&
@@ -73,11 +73,11 @@ export class _NoteTextEdit extends React.Component {
                         
                         <div>
 
-                            <ImageHover className="img-save-edit" name="save-edit" onHoverSrc="../js/apps/keep/img/ok_select.png"
-                                onRegularSrc={`../js/apps/keep/img/ok.png`} onClick={this.onSaveNewText} />
+                            <ImageHover className="img-save-edit" name="save-edit" onHoverSrc="js/apps/keep/img/ok_select.png"
+                                onRegularSrc={`js/apps/keep/img/ok.png`} onClick={this.onSaveNewText} />
 
-                            <ImageHover className="img-cancel-edit" name="cancel-edit" onHoverSrc="../js/apps/keep/img/cancel_select.png"
-                                onRegularSrc={`../js/apps/keep/img/cancel.png`} onClick={this.onCancelEdit} />
+                            <ImageHover className="img-cancel-edit" name="cancel-edit" onHoverSrc="js/apps/keep/img/cancel_select.png"
+                                onRegularSrc={`js/apps/keep/img/cancel.png`} onClick={this.onCancelEdit} />
                         </div>
                     </section>
                 }

@@ -1,6 +1,6 @@
 import { NoteToTrash } from '../cmps/note-to-trash.jsx';
 import { NoteTitleEdit } from './note-title-edit.jsx';
-
+import { ColorPicker } from './color-picker.jsx';
 
 export class NoteAudio extends React.Component {
 
@@ -18,7 +18,10 @@ export class NoteAudio extends React.Component {
                         Your browser does not support the audio element.
                     </audio>
                 </div>
-                <NoteToTrash note={note} onDeleteNote={onDeleteNote} />
+                <div className="flex">
+                    <NoteToTrash note={note} onDeleteNote={onDeleteNote} />
+                    <ColorPicker note={note} />
+                </div>
             </div>
         )
     }

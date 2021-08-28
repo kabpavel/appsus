@@ -10,7 +10,8 @@ export const noteService = {
     isNoteExist,
     updateNoteTitle,
     updateNoteText,
-    updateTodo
+    updateTodo,
+    updateNoteStyle
 }
 
 const KEY = 'notes';
@@ -18,17 +19,23 @@ var gNotes;
 
 _createNotes();
 
-function query() {
-    return gNotes// temp
+function query(filterBy) {
+    //return gNotes// temp
+    //debugger
     if (filterBy) {
-        // let { title, minPrice, maxPrice } = filterBy
+        // let { type, minPrice, maxPrice } = filterBy
         // maxPrice = maxPrice ? maxPrice : Infinity
         // minPrice = minPrice ? minPrice : 0
         // const notesToShow = gNotes.filter(
         //     note => note.title.includes(title)
         //         && note.listPrice.amount >= minPrice
         //         && note.listPrice.amount <= maxPrice)
-        // return Promise.resolve(notesToShow)
+
+        let { type } = filterBy
+        const notes = gNotes.filter(
+            note => note.type.includes(type))
+
+        return Promise.resolve(notes)
     }
 
     return Promise.resolve(gNotes)
@@ -96,7 +103,7 @@ function _saveNotesToStorage() {
 function updateNoteTitle(noteId, title, isTodos) {
     //debugger
     const idx = gNotes.findIndex(note => noteId === note.id)
-    if(!isTodos) gNotes[idx].info.title = title
+    if (!isTodos) gNotes[idx].info.title = title
     else gNotes[idx].info.label = title
     _saveNotesToStorage();
     return Promise.resolve()
@@ -113,12 +120,21 @@ function updateNoteText(noteId, text) {
 function updateTodo(noteId, todoId, doneAt) {
     //debugger
 
-    console.log('updateTodo(noteId, todoId, doneAt)',noteId, todoId, doneAt)
+    console.log('updateTodo(noteId, todoId, doneAt)', noteId, todoId, doneAt)
 
     const noteIdx = gNotes.findIndex(note => noteId === note.id)
-    
+
     const todoIdx = gNotes[noteIdx].info.todos.findIndex(todo => todoId === todo.id)
     gNotes[noteIdx].info.todos[todoIdx].doneAt = (!doneAt) ? null : doneAt
+
+    _saveNotesToStorage();
+    return Promise.resolve()
+}
+
+function updateNoteStyle(noteId, style) {
+    //debugger
+    const noteIdx = gNotes.findIndex(note => noteId === note.id)
+    gNotes[noteIdx].style = style
 
     _saveNotesToStorage();
     return Promise.resolve()

@@ -1,6 +1,7 @@
 import { NoteTodo } from './note-todo.jsx'
 import { NoteToTrash } from '../cmps/note-to-trash.jsx';
 import { NoteTitleEdit } from './note-title-edit.jsx';
+import { ColorPicker } from './color-picker.jsx';
 
 export class NoteTodos extends React.Component {
 
@@ -20,7 +21,10 @@ export class NoteTodos extends React.Component {
                         {note.info.todos.map((todo, index) => <NoteTodo todo={todo} index={index} key={index} noteId={note.id} />)}
                     </ul>
                 </div>
-                <NoteToTrash note={note} onDeleteNote={onDeleteNote} />
+                <div className="flex">
+                    <NoteToTrash note={note} onDeleteNote={onDeleteNote} />
+                    <ColorPicker note={note} />
+                </div>
             </div>
         )
     }

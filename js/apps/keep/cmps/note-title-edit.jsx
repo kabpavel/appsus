@@ -65,9 +65,9 @@ export class _NoteTitleEdit extends React.Component {
             <React.Fragment>
                 {!isEdit &&
                     <section className="note-title">
-                        <div>{title}</div>
-                        <ImageHover className="img-edit-title" name="edit-title" onHoverSrc="../js/apps/keep/img/edit-note_select.png"
-                            onRegularSrc={`../js/apps/keep/img/edit-note.png`} onClick={this.toggleEditStatus} />
+                        <div className="text-transform-none">{title}</div>
+                        <ImageHover className="img-edit-title" name="edit-title" onHoverSrc="js/apps/keep/img/edit-note_select.png"
+                            onRegularSrc={`js/apps/keep/img/edit-note.png`} onClick={this.toggleEditStatus} />
                     </section>
                 }
                 {isEdit &&
@@ -75,11 +75,11 @@ export class _NoteTitleEdit extends React.Component {
                         <input className="note-title-edit-input" type="text" name="editTitle" value={(!this.isFirstToggle) ? editTitle : title} 
                                onChange={this.handleOnChange} autocorrect="off" autocapitalize="none" />
                         <div>
-                            <ImageHover className="img-save-edit" name="save-edit" onHoverSrc="../js/apps/keep/img/ok_select.png"
-                                onRegularSrc={`../js/apps/keep/img/ok.png`} onClick={this.onSaveNewTitle} />
+                            <ImageHover className="img-save-edit" name="save-edit" onHoverSrc="js/apps/keep/img/ok_select.png"
+                                onRegularSrc={`js/apps/keep/img/ok.png`} onClick={this.onSaveNewTitle} />
 
-                            <ImageHover className="img-cancel-edit" name="cancel-edit" onHoverSrc="../js/apps/keep/img/cancel_select.png"
-                                onRegularSrc={`../js/apps/keep/img/cancel.png`} onClick={this.onCancelEdit} />
+                            <ImageHover className="img-cancel-edit" name="cancel-edit" onHoverSrc="js/apps/keep/img/cancel_select.png"
+                                onRegularSrc={`js/apps/keep/img/cancel.png`} onClick={this.onCancelEdit} />
                         </div>
                     </section>
                 }
