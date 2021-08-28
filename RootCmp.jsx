@@ -23,7 +23,7 @@ export function App() {
           <Route path="/appsus" component={AppsusApp} />
           <Route path="/about" component={About} />
           <Route path="/note-app" component={NoteApp} />
-          <Route path="/" component={Home} />
+
         </Switch>
       </main>
       <footer>

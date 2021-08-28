@@ -6,7 +6,7 @@ export class EmailList extends React.Component {
         if(!emails)return <div>Loading ...</div>
         return (
             <div className="email-list">
-                {emails.map(email => <EmailPreview key={email.id} email={email} onDeleteEmail={onDeleteEmail} onBack={onBack} onSelectEmail={onSelectEmail} />)}
+                {emails.map(email => <EmailPreview key={email.id} email={email} onWritingMail={this.props.onWritingMail} onDeleteEmail={onDeleteEmail} onBack={onBack} onSelectEmail={onSelectEmail} />)}
             </div>
         );
     }

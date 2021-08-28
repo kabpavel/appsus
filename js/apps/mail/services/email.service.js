@@ -18,6 +18,7 @@ const gEmails = [{
     body: `Text messaging, or texting, is the act of composing and sending electronic messages, typically consisting of alphabetic and numeric characters, between two or more users of mobile devices, desktops/laptops, or other type of compatible computer.
          Text messages may be sent over a cellular network, or may also be sent via an Internet connection.`,
     isRead: false,
+    star: false,
     sentAt: new Date(),
     to: 'momoi@momo.com'
 },
@@ -29,6 +30,19 @@ const gEmails = [{
     body: `electronic messages, typically consisting of alphabetic and numeric characters, between two or more users of mobile devices, desktops/laptops, or other type of compatible computer.
     Text messages may be sent over a cellular network, or may also be sent via an Internet connection.`,
     isRead: false,
+    star: false,
+    sentAt: new Date(),
+    to: 'momo@momo.com'
+},
+{
+    id: 3,
+    name: 'Itay',
+    emailAddress: 'itay@walla.com',
+    subject: 'Normally i stay up late',
+    body: `electronic messages, typically consisting of alphabetic and numeric characters, between two or more users of mobile devices, desktops/laptops, or other type of compatible computer.
+    Text messages may be sent over a cellular network, or may also be sent via an Internet connection.`,
+    isRead: false,
+    star: false,
     sentAt: new Date(),
     to: 'momo@momo.com'
 }
@@ -37,15 +51,16 @@ const gEmails = [{
 // _createEmails();
 
 function query(filterBy) {
+    console.log('we are in')
     if (filterBy) {
         console.log('filterBy', filterBy);
         console.log('gEmails', gEmails);
-        let { name } = filterBy
+        let { star} = filterBy
 
         // maxPrice = maxPrice ? maxPrice : Infinity
         // minPublishDate = minPublishDate ? minPublishDate : 0
 
-        const emailsToShow = gEmails.filter(email => email.name.includes(name)/*/ && email.publishedDate >= minPublishDate && email.listPrice.amount <= maxPrice/*/)
+        const emailsToShow = gEmails.filter(email => email.name.includes(name)&& email.star ===true/* && email.listPrice.amount <= maxPrice/*/)
         return Promise.resolve(emailsToShow)
     }
     console.log('gEmails', gEmails);
@@ -68,8 +83,8 @@ function saveEmail(emailToEdit) {
 
 
 function _addEmail(emailToEdit) {
-    const { firstname, lastname, emailaddress, subject, country, body, to } = emailToEdit
-    var email = _createEmail(firstname + ' ' + lastname, emailaddress, subject, body, to)
+    const { name, emailaddress, subject, body, to } = emailToEdit
+    var email = _createEmail(name, emailaddress, subject, body, to)
     gEmails.unshift(email)
     console.log('gMails', gEmails);
     _saveEmailToStorage();
@@ -109,6 +124,7 @@ function _createEmail(name, emailAddress, subject, body, to) {
         subject,
         body,
         isRead: false,
+        star: false,
         sentAt: new Date(),
         to
     }
