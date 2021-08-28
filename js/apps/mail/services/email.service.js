@@ -51,19 +51,18 @@ const gEmails = [{
 // _createEmails();
 
 function query(filterBy) {
-    console.log('we are in')
-    if (filterBy) {
-        console.log('filterBy', filterBy);
-        console.log('gEmails', gEmails);
-        let { star} = filterBy
+    if (filterBy.name || filterBy.parm) {
+        let { name, parm } = filterBy
+        if (name && (parm === 'star' || parm === 'sent-mail')) {
+            const emailsToShow = gEmails.filter(email => email.name.includes(name) && email[parm] === true/* && email.listPrice.amount <= maxPrice/*/)
+            return Promise.resolve(emailsToShow)
+        }
+        if (parm === 'star' || parm === 'sent-mail') {
+            const emailsToShow = gEmails.filter(email => email[parm] === true/* && email.listPrice.amount <= maxPrice/*/)
 
-        // maxPrice = maxPrice ? maxPrice : Infinity
-        // minPublishDate = minPublishDate ? minPublishDate : 0
-
-        const emailsToShow = gEmails.filter(email => email.name.includes(name)&& email.star ===true/* && email.listPrice.amount <= maxPrice/*/)
-        return Promise.resolve(emailsToShow)
+            return Promise.resolve(emailsToShow)
+        }
     }
-    console.log('gEmails', gEmails);
     return Promise.resolve(gEmails)
 }
 
@@ -86,7 +85,6 @@ function _addEmail(emailToEdit) {
     const { name, emailaddress, subject, body, to } = emailToEdit
     var email = _createEmail(name, emailaddress, subject, body, to)
     gEmails.unshift(email)
-    console.log('gMails', gEmails);
     _saveEmailToStorage();
     return Promise.resolve()
 }

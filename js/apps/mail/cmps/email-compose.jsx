@@ -10,36 +10,38 @@ export class EmailCompose extends React.Component {
             body: '',
         }
     }
-    ComponenentDidMount() {
-     
+    componentDidMount() {
         const { email, isDraft } = this.props
-        const { name, emailaddress, subject, body, to } = email
         if (isDraft) {
-            console.log("stack here")
+            const { name, emailaddress, subject, body, to } = email
+            console.log(email);
             this.setState({
-                values: {
-                    ...this.state.values, [name]: name, [emailaddress]: emailaddress,
-                    [subject]: subject, [body]: body, [to]: to
+                values: {  name,  emailaddress,
+                    subject,  body,  to
                 }
-            })
-
+            }, () => {
+                console.log('this.state.values',this.state.values);})           
         }
     }
 
     handleChange = ({ target }) => {
         const field = target.name
-        // console.log(target.value);
         this.setState(prevState => ({ values: { ...prevState.values, [field]: target.value } }))
     }
 
 
     handleSubmit = (event) => {
-        console.log("okk what the fuck is going on")
         event.preventDefault();
         const { onWritingMail, email, isDraft } = this.props
-        const { name, emailaddress, subject, body, to } = this.state.values
-        alert('A name was submitted: ' + this.state.values.firstname);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Your mail as been sent',
+          showConfirmButton: false,
+          timer: 1500
+        })
         if (isDraft) {
+            const { name, emailaddress, subject, body, to } = this.state.values
             email.name = name;
             email.emailaddress = emailaddress;
             email.subject = subject;
@@ -51,22 +53,34 @@ export class EmailCompose extends React.Component {
             emailService.saveEmail(this.state.values)
         }
         // emailService.saveEmail(this.state.values)
-        console.log('write it already')
         onWritingMail()
     }
 
     render() {
         const { name, emailaddress, subject, body, to } = this.state.values
-        const { onWritingMail } = this.props
-        debugger
-
+        const { onWritingMail, email,saveToDraft } = this.props
         return (
             <div className="compose-email-container">
                 <button className="exit" onClick={() => {
+                    Swal.fire({
+                        title: 'Do you want to save the changes?',
+                        showDenyButton: true,
+                        showCancelButton: true,
+                        confirmButtonText: `Save`,
+                        denyButtonText: `Don't save`,
+                      }).then((result) => {
+                        /* Read more about isConfirmed, isDenied below */
+                        if (result.isConfirmed) {
+                            saveToDraft(this.state.values)
+                          Swal.fire('Saved to draft!', '', 'success')
+                        } else if (result.isDenied) {
+                          Swal.fire('Changes are not saved', '', 'info')
+                        }
+                      })
                     onWritingMail()
                 }
                 }> <img src="assets/delete.png" alt="" /> </button>
-                <form onSubmit={this.handleSubmit} >
+                <form /*onSubmit={this.handleSubmit}*/>
 
                     <label htmlFor="to">To</label>
                     <input type="text" id="to" name="to" placeholder="name@mail.com" value={to} onChange={this.handleChange} />
@@ -91,8 +105,8 @@ export class EmailCompose extends React.Component {
                     <label htmlFor="body">Body</label>
                     <textarea id="body" name="body" placeholder="Write something.." value={body} onChange={this.handleChange}></textarea>
 
-                    <input type="submit" value="Submit" />
-
+                    {/* <input type="submit" value="Submit" /> */}
+                    <button className="submit-btn" onClick={this.handleSubmit}>Submit</button>
                 </form>
             </div>
         )

@@ -2,6 +2,7 @@ const { Link } = ReactRouterDOM
 
 import { Clock } from '../../../cmps/clock.jsx';
 import { emailService } from '../services/email.service.js';
+import { EmailCompose } from './email-compose.jsx';
 import { EmailDetails } from './email-preview-span.jsx';
 import { LongTxt } from './LongTxt.jsx';
 import { Star } from './star.jsx';
@@ -16,10 +17,6 @@ export class EmailPreview extends React.Component {
     starClicked = false;
     onStarChange = () => {
         this.starClicked = true;
-        // setTimeout(()=>{
-        //     this.setState({ selectedEmail: null })
-        //     console.log('selectedEmail',this.state.selectedEmail)
-        // },0.1)
 
 
     }
@@ -42,12 +39,12 @@ export class EmailPreview extends React.Component {
         }
         else {
             const { email, onSelectEmail } = this.props
-            email.star=true;
+            email.star=!email.star;
         }
         this.starClicked = false;
     }
     render() {
-        const { email, onBack, onDeleteEmail } = this.props
+        const { email, onBack, onDeleteEmail,saveToDraft } = this.props
         const { selectedEmail } = this.state
         return (
             <Link to={`/email/${email.id}`} >
@@ -65,14 +62,16 @@ export class EmailPreview extends React.Component {
                             <LongTxt text={email.body} />
                         </div>
                     </div>
+             
                     <div className="email-clock">
                         <Clock />
                     </div>
 
                 </article>
                 <hr className="email-hr" />
-                {selectedEmail && <EmailDetails email={email} onBack={onBack} onDeleteEmail={onDeleteEmail}  />}
+                {selectedEmail && <EmailDetails email={email} onBack={onBack} onDeleteEmail={onDeleteEmail}  saveToDraft={saveToDraft}/>}
             </Link>
+            
         )
     }
 }

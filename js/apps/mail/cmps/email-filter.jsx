@@ -3,9 +3,10 @@ export class EmailFilter extends React.Component {
     state = {
         filterBy: {
             name: '',
+            parm: ''
         },
     };
-    
+
     handleChange = (ev) => {
         const field = ev.target.name;
         const value =
@@ -23,6 +24,7 @@ export class EmailFilter extends React.Component {
     };
 
     render() {
+        const { parm } = this.props
         const { name } = this.state.filterBy;
         return (
             <form className='email-filter' onSubmit={this.onFilter}>

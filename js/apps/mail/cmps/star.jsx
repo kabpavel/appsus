@@ -8,8 +8,6 @@ export class Star extends React.Component {
 
   setStar = (ev) => {
     const {starred} = this.state
-    // console.log("ev",ev);
-    // ev.stopPropagation()
     const { onStarChange } = this.props;
     onStarChange();
     this.setState({ starred: !starred })
