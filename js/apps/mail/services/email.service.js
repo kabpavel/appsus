@@ -62,6 +62,11 @@ function query(filterBy) {
 
             return Promise.resolve(emailsToShow)
         }
+        if (name) {
+            const emailsToShow = gEmails.filter(email => email.name.includes(name)/* && email.listPrice.amount <= maxPrice/*/)
+
+            return Promise.resolve(emailsToShow)
+        }
     }
     return Promise.resolve(gEmails)
 }

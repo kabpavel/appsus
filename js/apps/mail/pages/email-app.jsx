@@ -96,8 +96,8 @@ class _Email extends React.Component {
 
 
     render() {
-        const { isOpen, emails, selectedEmail, writingMail, parm ,isDrafts,drafts} = this.state
-        if (!emails.length) return <div>Loading...</div>
+        const { isOpen, emails, selectedEmail, writingMail, parm ,isDrafts,drafts,filterBy} = this.state
+        if (!emails.length&&(!filterBy&&!parm)) return <div>Loading...</div>
         return <section className="email-app">
             <div className="email-nav-icon" onClick={() => {
                 this.setState({ isOpen: !isOpen })
