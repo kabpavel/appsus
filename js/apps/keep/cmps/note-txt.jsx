@@ -19,7 +19,7 @@ export class NoteTxt extends React.Component {
                     {/* <h2 className="info-title">{note.info.title}</h2> */}
                     <NoteTextEdit noteId={note.id} text={note.info.txt} />
                 </div>
-                <div className="flex">
+                <div className="flex align-center">
                     <NoteToTrash note={note} onDeleteNote={onDeleteNote} />
                     <ColorPicker note={note} />
                 </div>

@@ -2,3 +2,13 @@
     width: 20px !important;
     height: 20px !important;
 }
+
+.note-title {
+    width:96%;
+
+}
+
+.note-title-edit-input {
+    width:98%;
+
+}

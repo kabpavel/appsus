@@ -18,7 +18,7 @@ export class NoteAudio extends React.Component {
                         Your browser does not support the audio element.
                     </audio>
                 </div>
-                <div className="flex">
+                <div className="flex align-center">
                     <NoteToTrash note={note} onDeleteNote={onDeleteNote} />
                     <ColorPicker note={note} />
                 </div>
