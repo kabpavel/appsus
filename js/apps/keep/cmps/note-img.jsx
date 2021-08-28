@@ -15,7 +15,7 @@ export class NoteImg extends React.Component {
                     <NoteTitleEdit noteId={note.id} title={note.info.title} />
                     <img src={note.info.url} alt="" />
                 </div>
-                <div className="flex">
+                <div className="flex align-center">
                     <NoteToTrash note={note} onDeleteNote={onDeleteNote} />
                     <ColorPicker note={note} />
                 </div>

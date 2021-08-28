@@ -21,7 +21,7 @@ export class NoteTodos extends React.Component {
                         {note.info.todos.map((todo, index) => <NoteTodo todo={todo} index={index} key={index} noteId={note.id} />)}
                     </ul>
                 </div>
-                <div className="flex">
+                <div className="flex align-center">
                     <NoteToTrash note={note} onDeleteNote={onDeleteNote} />
                     <ColorPicker note={note} />
                 </div>
