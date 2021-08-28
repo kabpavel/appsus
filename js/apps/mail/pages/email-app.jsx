@@ -59,6 +59,7 @@ class _Email extends React.Component {
         }
         else {
             this.setState({ parm: null })
+                this.setState({isDrafts:false})
             this.loadEmails()
         }
     }
