@@ -26,10 +26,10 @@ class _AppHeader extends React.Component {
 
                     <div className={isOpen ? "open nav-container":"close nav-container"}>
                         <NavLink activeClassName="my-active" className={isOpen ? "open home" : "close home"} exact to="/" ><img src="assets/home.png" alt="" /></NavLink>
-                        <NavLink activeClassName="my-active" className={isOpen ? "open email" : "close email"} to="/email" ><img src="assets/emailIcon.png" alt="" /></NavLink>
-                        <NavLink activeClassName="my-active" className={isOpen ? "open keep" : "close keep"} to="/note-app" ><img src="assets/keep.ico" alt="" /></NavLink>
-                        <NavLink activeClassName="my-active" className={isOpen ? "open book" : "close book"} to="/miss-book/" ><img src="assets/books.jpg" alt="" /></NavLink>
-                        <NavLink activeClassName="my-active" className={isOpen ? "open about" : "close about"} to="/about" >About</NavLink>
+                        <NavLink activeClassName="my-active" className={isOpen ? "open email" : "close email"} to="/email" ><img src="assets/email.png" alt="" /></NavLink>
+                        <NavLink activeClassName="my-active" className={isOpen ? "open keep" : "close keep"} to="/note-app" ><img src="assets/notes.png" alt="" /></NavLink>
+                        <NavLink activeClassName="my-active" className={isOpen ? "open book" : "close book"} to="/miss-book/" ><img src="assets/books.png" alt="" /></NavLink>
+                        <NavLink activeClassName="my-active" className={isOpen ? "open about" : "close about"} to="/about" ><img src="assets/about-us.png" alt="" /></NavLink>
                     </div>
                 </nav>
             </section>
