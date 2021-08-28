@@ -1,0 +1,54 @@
+.ml2 {
+    font-weight: 900;
+    font-size: 3.5em;
+  }
+  
+  .ml2 .letter {
+    display: inline-block;
+    line-height: 1em;
+  }
+
+
+.home-section{
+    background-color: blue;
+    width: 100%;
+    height: 100%;
+
+}
+
+  div .welcome-container {
+      /* display: flex; */
+    background-color: orangered;
+    height: 150px;
+    width: 150px;
+    align-items: center;
+    text-align: center;
+    font-family: cursive;
+    font-size: 3rem;
+    
+    left: 150px;
+    top: 150px;
+    
+    position: absolute;
+    
+    animation: sampleanimation 10s infinite;
+  }
+  
+  @keyframes sampleanimation {
+    0% {
+      left: 150px;
+      top: 150px;
+    }
+    25% {
+      left: 450px;
+      top: 150px;
+    }
+    50% {
+      left: 450px;
+      top: 450px;
+    }
+    75% {
+      left: 450px;
+      top: 150px;
+    }
+  }
