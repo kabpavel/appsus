@@ -56,7 +56,7 @@ export class EmailPreview extends React.Component {
                     <div className="email-user-container">
                         <img className="user-picture" src="assets/unnamed.png" alt="user-pic" />
                         <div className="email-text-preview-container">
-                            <Star onStarChange={this.onStarChange} />
+                            <Star onStarChange={this.onStarChange } isStarOn={email.star}/>
                             <h4 className="email-preview-name"> {email.name}</h4>
                             <h4 className="email-preview-title"> {email.subject} -</h4>
                             <LongTxt text={email.body} />

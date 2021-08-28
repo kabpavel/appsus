@@ -7,7 +7,7 @@ export class Star extends React.Component {
   };
 
   setStar = (ev) => {
-    const {starred} = this.state
+    const { starred } = this.state
     const { onStarChange } = this.props;
     onStarChange();
     this.setState({ starred: !starred })
@@ -15,11 +15,12 @@ export class Star extends React.Component {
 
   render() {
     const { starred } = this.state
+    const { isStarOn } = this.props
     return (
       <button className="star-btn" onClick={(event) => {
         this.setStar(event)
       }}>
-        <span className={starred ? "star on" : "star off"}>&#9733;</span>
+        <span className={starred||isStarOn ? "star on" : "star off"}>&#9733;</span>
       </button>
 
     )
