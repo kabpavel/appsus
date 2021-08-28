@@ -33,6 +33,12 @@
     background-color: rgb(246 246 246);
 }
 
+
+
+.email-text-preview-container>*{
+    margin: 0 5px ;
+}
+
 .email-preview-name {
     font-weight: 400;
     font-size: 1.2rem;
@@ -46,4 +52,13 @@
 .email-clock {
     color: blue;
     font-weight: 500;
+}
+
+
+@media (min-width:768px) {
+    .email-text-preview-container{
+        display: flex;
+        align-items: center;
+        justify-content:space-around;
+    }
 }

@@ -1,39 +1,55 @@
-
-.detailes-container{
+.detailes-container {
     display: flex;
     flex-direction: column;
     margin: 0 10px;
 }
-.email-details-title{
+
+.email-details-title {
     font-weight: 200;
     margin: 3px;
-font-size: 2rem;
+    font-size: 2rem;
 }
-.email-details-name{
-color: gray;
 
+.email-details-name {
+    color: gray;
 }
-.detailes-title-container{
-display: flex;
-justify-content: space-between;
+
+.detailes-title-container {
+    display: flex;
+    justify-content: space-between;
 }
-.detailes-title-container button{
+
+.detailes-title-container button {
     border: none;
     align-items: center;
     border-radius: 3rem;
 }
 
-.detailes-title-container button img{
+.detailes-title-container button img {
     max-width: 30px;
-    
 }
-.email-details-name span{
+
+.email-details-name span {
     color: black;
     font-weight: 600;
 }
 
-.email-details-content{
+.email-details-content {
     align-self: center;
     margin: 0 30px;
     font-weight: 400;
+}
+
+.buttons-preview-container {
+    display: flex;
+    align-items: center;
+}
+
+.buttons-preview-container>* {
+    margin: 0px 3px;
+}
+
+.replay-arrow {
+    width: 30px;
+    height: 40px;
 }
