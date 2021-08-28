@@ -30,6 +30,11 @@
     opacity: 0.8;
     z-index: 1;
 }
+.nav-container img{
+    max-width: 30px;
+    min-width: 30px;
+    min-height: 30px;
+}
 .nav-container>*{
     margin: 2px;
 } 

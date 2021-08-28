@@ -39,7 +39,7 @@ export class EmailDetails extends React.Component {
                     }}
                         onMouseEnter={() => this.setHover('trash-open')}
                         onMouseLeave={() => this.setHover('')}
-                    ><img src={hover === 'trash-open' ? 'assets/deleteOpen.png' : "assets/delete.png"} alt="" /></button>
+                    ><img src={hover === 'trash-open' ? 'assets/delete.png' : "assets/delete.png"} alt="" /></button>
                     <button className="replay-arrow" onClick={() => {
                         this.onIsDraft()
                     }}>⮫</button>
