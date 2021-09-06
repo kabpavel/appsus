@@ -36,8 +36,8 @@ class _Email extends React.Component {
     }
 
     loadEmails = () => {
-        const filter =  this.state.filterBy
-        console.log('filter',filter)
+        const filter = this.state.filterBy
+        console.log('filter', filter)
         // const filter = ''
         emailService.query(filter).then((emails) => {
             this.setState({ emails });
@@ -64,8 +64,8 @@ class _Email extends React.Component {
 
     }
     onSendMail = () => {
-        const  sentMails = emailService.getSentEmails()
-        this.setState({emailsSent:sentMails})
+        const sentMails = emailService.getSentEmails()
+        this.setState({ emailsSent: sentMails })
 
     }
 
@@ -107,7 +107,8 @@ class _Email extends React.Component {
 
         console.log('emailsStarred', emailsStarred)
         return <section className="email-app">
-                      <EmailFilter onSetFilter={this.onSetFilter} />
+  
+
             <div className="email-nav-icon" onClick={() => {
                 this.setState({ isOpen: !isOpen })
             }}>☰</div>
@@ -139,11 +140,11 @@ class _Email extends React.Component {
                         <hr />
                     </div>
                 </nav>
+
                 <hr className="email-hr" />
                 <div className="react-fregment">
                     {/* <AddEmail/> */}
-
-                    
+                    <EmailFilter onSetFilter={this.onSetFilter} />
                     {inbox && <EmailList emails={emails} onSelectEmail={this.onSelectEmail}
                         onBack={() => this.onSelectEmail(null)} onDeleteEmail={this.onDeleteEmail} saveToDraft={this.saveToDraft} />}
                     {star && <EmailList emails={emailsStarred} onSelectEmail={this.onSelectEmail}
