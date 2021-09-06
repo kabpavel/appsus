@@ -9,59 +9,64 @@ const { NavLink, withRouter, Route, Router } = ReactRouterDOM
 
 class _Email extends React.Component {
     state = {
-        drafts:[],
-        isDrafts:false,
         emails: [],
+        emailsSent: [],
+        emailsStarred: [],
+        drafts: [],
+
+        inbox: true,
+        star: false,
+        sent: false,
+        draft: false,
+
         filterBy: null,
-        parm: null,
         selectedEmail: null,
         isOpen: false,
         writingMail: false
     }
     componentDidMount() {
         this.loadEmails();
-        const urlSrcPrm = new URLSearchParams(this.props.location.search)
-        for (const { key, val } of urlSrcPrm) {
-
-
-        }
     }
 
-    saveToDraft=(values)=>{
+    saveToDraft = (values) => {
         this.state.drafts.push(values)
-        this.setState({drafts:this.state.drafts})
+        this.setState({ drafts: this.state.drafts })
         console.log(this.state.drafts)
-    
+
     }
 
     loadEmails = () => {
-        const filter={name:this.state.filterBy,parm:this.state.parm}
+        const filter =  this.state.filterBy
+        console.log('filter',filter)
         // const filter = ''
         emailService.query(filter).then((emails) => {
             this.setState({ emails });
 
         });
+
+
+
     };
     onAddMail = () => {
         this.setState({ writingMail: !this.state.writingMail })
     }
 
-    filterByPath = () => {
-        const str = this.props.location.pathname.split('/')
-        if (str.length > 2) {
-            this.setState({ parm: str[2] })
-            if(this.state.parm==='drafts')
-            this.setState({isDrafts:true})
-            else{
-                this.setState({isDrafts:false})
-            }
-            this.loadEmails()
-        }
-        else {
-            this.setState({ parm: null })
-                this.setState({isDrafts:false})
-            this.loadEmails()
-        }
+    onHandleList = (ev) => {
+        const listToShow = ev.target.name
+        // this.setState({[listToShow]:true})  
+        this.setState({ inbox: false })
+        this.setState({ star: false })
+        this.setState({ sent: false })
+        this.setState({ draft: false })
+        this.setState(prevState => ({ ...prevState, [listToShow]: true }))
+        console.log(this.state[listToShow])
+        this.setState({ emailsStarred: emailService.getStarList() })
+
+    }
+    onSendMail = () => {
+        const  sentMails = emailService.getSentEmails()
+        this.setState({emailsSent:sentMails})
+
     }
 
     onSetFilter = (filterBy) => {
@@ -97,39 +102,60 @@ class _Email extends React.Component {
 
 
     render() {
-        const { isOpen, emails, selectedEmail, writingMail, parm ,isDrafts,drafts,filterBy} = this.state
-        if (!emails.length&&(!filterBy&&!parm)) return <div>Loading...</div>
+        const { isOpen, emails, emailsSent, emailsStarred, drafts, writingMail, filterBy, inbox, star, sent, draft } = this.state
+        if (!emails.length && (!filterBy)) return <div>Loading...</div>
+
+        console.log('emailsStarred', emailsStarred)
         return <section className="email-app">
             <div className="email-nav-icon" onClick={() => {
                 this.setState({ isOpen: !isOpen })
             }}>☰</div>
             <div className="content-mail-container">
-                <nav className={isOpen ? "open email-nav-container" : "close email-nav-container"} onClick={() => {
-                    this.filterByPath()
-                }}>
+                <nav className={isOpen ? "open email-nav-container" : "close email-nav-container"} >
                     <button className="desctop-compose-btn" onClick={this.onAddMail}><span>+</span> Compose</button>
                     <div className="email-nav" >
-                        <NavLink activeClassName="my-active" className="inbox block" exact to="/email" >📥 Inbox</NavLink>
-                        <NavLink activeClassName="my-active" className="starred block" to="/email/star" ><span>✭</span> Starred</NavLink>
+                        <button className="inbox block btn" name="inbox" onClick={(ev) => {
+                            this.onHandleList(ev)
+                        }
+                        }>📥 Inbox</button>
+                        <button className="starred block btn" name="star" onClick={(ev) => {
+                            this.onHandleList(ev)
+                        }
+                        }><span>✭</span> Starred</button>
+                        <button className="sent-mail block btn" name="sent" onClick={(ev) => {
+                            this.onHandleList(ev)
+                        }
+                        }> ➦ Sent Mail</button>
+                        <button className="drafts block btn" name="draft" onClick={(ev) => {
+                            this.onHandleList(ev)
+                        }
+                        }>📄 Drafts</button>
+
+                        {/* <NavLink activeClassName="my-active" className="inbox block" to={`email/inbox`} >📥 Inbox</NavLink>
+                        <NavLink activeClassName="my-active" className="starred block" to={`/email/star`} ><span>✭</span> Starred</NavLink>
                         <NavLink activeClassName="my-active" className="sent-mail block" to="/email/sent-mail" > ➦ Sent Mail</NavLink>
-                        <NavLink activeClassName="my-active" className="drafts block" to="/email/drafts" >📄 Drafts</NavLink>
+                        <NavLink activeClassName="my-active" className="drafts block" to="/email/drafts" >📄 Drafts</NavLink> */}
                         <hr />
                     </div>
                 </nav>
                 <hr className="email-hr" />
                 <div className="react-fregment">
                     {/* <AddEmail/> */}
-                    <EmailFilter onSetFilter={this.onSetFilter} parm={parm} />
 
-                    {!isDrafts&&<EmailList emails={emails} onSelectEmail={this.onSelectEmail} 
-                    onBack={() => this.onSelectEmail(null)} onDeleteEmail={this.onDeleteEmail} saveToDraft={this.saveToDraft} />}
-                    {isDrafts&&<EmailList emails={drafts} onSelectEmail={this.onSelectEmail} 
-                    onBack={() => this.onSelectEmail(null)} onDeleteEmail={this.onDeleteEmail} />}
+                    <EmailFilter onSetFilter={this.onSetFilter} />
+                    {inbox && <EmailList emails={emails} onSelectEmail={this.onSelectEmail}
+                        onBack={() => this.onSelectEmail(null)} onDeleteEmail={this.onDeleteEmail} saveToDraft={this.saveToDraft} />}
+                    {star && <EmailList emails={emailsStarred} onSelectEmail={this.onSelectEmail}
+                        onBack={() => this.onSelectEmail(null)} onDeleteEmail={this.onDeleteEmail} saveToDraft={this.saveToDraft} />}
+                    {sent && <EmailList emails={emailsSent} onSelectEmail={this.onSelectEmail}
+                        onBack={() => this.onSelectEmail(null)} onDeleteEmail={this.onDeleteEmail} saveToDraft={this.saveToDraft} />}
+                    {draft && <EmailList emails={drafts} onSelectEmail={this.onSelectEmail}
+                        onBack={() => this.onSelectEmail(null)} onDeleteEmail={this.onDeleteEmail} />}
                 </div>
             </div>
             {/* {selectedEmail && <EmailDetails email={selectedEmail} onDeleteEmail={this.onDeleteEmail} />} */}
             <button className="new-mail-create-btn" onClick={this.onAddMail}><img src="assets/new-mail-create.png" alt="writing-email" /></button>
-            {writingMail && <EmailCompose onWritingMail={this.onAddMail} saveToDraft={this.saveToDraft}/>}
+            {writingMail && <EmailCompose onWritingMail={this.onAddMail} saveToDraft={this.saveToDraft} onSendMail={this.onSendMail} />}
         </section>
     }
 }

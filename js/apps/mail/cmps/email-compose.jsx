@@ -26,13 +26,14 @@ export class EmailCompose extends React.Component {
 
     handleChange = ({ target }) => {
         const field = target.name
+        console.log('field',field)
         this.setState(prevState => ({ values: { ...prevState.values, [field]: target.value } }))
     }
 
 
     handleSubmit = (event) => {
         event.preventDefault();
-        const { onWritingMail, email, isDraft } = this.props
+        const { onWritingMail, email, isDraft,onSendMail } = this.props
         Swal.fire({
           position: 'top-end',
           icon: 'success',
@@ -52,13 +53,14 @@ export class EmailCompose extends React.Component {
         else {
             emailService.saveEmail(this.state.values)
         }
+        onSendMail()
         // emailService.saveEmail(this.state.values)
         onWritingMail()
     }
 
     render() {
         const { name, emailaddress, subject, body, to } = this.state.values
-        const { onWritingMail, email,saveToDraft } = this.props
+        const { onWritingMail,saveToDraft ,} = this.props
         return (
             <div className="compose-email-container">
                 <button className="exit" onClick={() => {
