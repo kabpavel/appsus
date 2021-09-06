@@ -107,6 +107,7 @@ class _Email extends React.Component {
 
         console.log('emailsStarred', emailsStarred)
         return <section className="email-app">
+                      <EmailFilter onSetFilter={this.onSetFilter} />
             <div className="email-nav-icon" onClick={() => {
                 this.setState({ isOpen: !isOpen })
             }}>☰</div>
@@ -142,7 +143,7 @@ class _Email extends React.Component {
                 <div className="react-fregment">
                     {/* <AddEmail/> */}
 
-                    <EmailFilter onSetFilter={this.onSetFilter} />
+                    
                     {inbox && <EmailList emails={emails} onSelectEmail={this.onSelectEmail}
                         onBack={() => this.onSelectEmail(null)} onDeleteEmail={this.onDeleteEmail} saveToDraft={this.saveToDraft} />}
                     {star && <EmailList emails={emailsStarred} onSelectEmail={this.onSelectEmail}
