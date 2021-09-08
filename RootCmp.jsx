@@ -21,7 +21,7 @@ export function App() {
       </header>
       <main>
         <Switch>
-          <Route path="/email" component={Email} />
+          <Route path="/email/" component={Email} />
           <Route path="/appsus" component={AppsusApp} />
           <Route path="/about" component={About} />
           <Route path="/note-app" component={NoteApp} />

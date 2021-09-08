@@ -105,6 +105,16 @@
         max-width: 300px;
     }
 
+    .email-nav .btn{
+        background-color: inherit;
+        border: none;
+        width: 100%;
+    }
+
+    .email-nav .btn{
+    
+    }
+
     .email-nav .my-active {
         background-color:rgb(248, 163, 132);
         font-family:Georgia, 'Times New Roman', Times, serif;

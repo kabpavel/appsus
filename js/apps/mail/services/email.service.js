@@ -6,7 +6,9 @@ export const emailService = {
     saveEmail,
     deleteEmail,
     getEmailById,
-    getNextemailId
+    getNextemailId,
+    getStarList,
+    getSentEmails
 }
 const loggedinUser = { email: 'user@appsus.com', fullname: 'Mahatma Appsus' }
 const KEY = 'emails';
@@ -47,29 +49,40 @@ const gEmails = [{
     to: 'momo@momo.com'
 }
 ];
+const SentMails = []
 
 // _createEmails();
 
 function query(filterBy) {
-    if (filterBy.name || filterBy.parm) {
-        let { name, parm } = filterBy
-        if (name && (parm === 'star' || parm === 'sent-mail')) {
-            const emailsToShow = gEmails.filter(email => email.name.includes(name) && email[parm] === true/* && email.listPrice.amount <= maxPrice/*/)
-            return Promise.resolve(emailsToShow)
-        }
-        if (parm === 'star' || parm === 'sent-mail') {
-            const emailsToShow = gEmails.filter(email => email[parm] === true/* && email.listPrice.amount <= maxPrice/*/)
+    console.log('im here');
+    if (filterBy) {
+        let { name, emailAddress } = filterBy
+        console.log('query filterBy', name)
+        console.log('query filterBy', emailAddress)
 
-            return Promise.resolve(emailsToShow)
-        }
-        if (name) {
-            const emailsToShow = gEmails.filter(email => email.name.includes(name)/* && email.listPrice.amount <= maxPrice/*/)
-
-            return Promise.resolve(emailsToShow)
-        }
+        const emailsToShow = gEmails.filter(email => {
+            console.log('email.name', email.name)
+            return email.name.toUpperCase().includes(name.toUpperCase()) &&
+                email.emailAddress.toUpperCase().includes(emailAddress.toUpperCase())
+        })
+        return Promise.resolve(emailsToShow)
     }
+
     return Promise.resolve(gEmails)
 }
+
+function getSentEmails() {
+    return SentMails
+}
+function getStarList() {
+    console.log('we are here');
+    const emailsStarred = gEmails.filter((email) => {
+        console.log(email.star);
+        return email.star
+    })
+    return emailsStarred
+}
+
 
 function deleteEmail(emailId) {
     var emailIdx = gEmails.findIndex(function (email) {
@@ -89,6 +102,7 @@ function saveEmail(emailToEdit) {
 function _addEmail(emailToEdit) {
     const { name, emailaddress, subject, body, to } = emailToEdit
     var email = _createEmail(name, emailaddress, subject, body, to)
+    SentMails.unshift(email)
     gEmails.unshift(email)
     _saveEmailToStorage();
     return Promise.resolve()

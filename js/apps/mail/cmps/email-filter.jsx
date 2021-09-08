@@ -3,9 +3,12 @@ export class EmailFilter extends React.Component {
     state = {
         filterBy: {
             name: '',
-            parm: ''
+            emailAddress: '',
         },
+        field: ''
     };
+
+
 
     handleChange = (ev) => {
         const field = ev.target.name;
@@ -17,27 +20,40 @@ export class EmailFilter extends React.Component {
         });
     };
 
+    onSelect = (ev) => {
+        this.setState({ field: ev.target.value })
+
+    }
+
     onFilter = (ev) => {
         ev.preventDefault();
-        console.log(this.state.filterBy);
         this.props.onSetFilter(this.state.filterBy)
     };
 
     render() {
-        const { parm } = this.props
-        const { name } = this.state.filterBy;
+        const { filterBy, field } = this.state
+        const { name, emailAddress } = filterBy;
         return (
             <form className='email-filter' onSubmit={this.onFilter}>
-                <label htmlFor='by-name'>By Name</label>
-                <input
-                    name='name'
-                    id='by-name'
-                    type='text'
-                    placeholder='name'
-                    value={name}
-                    onChange={this.handleChange}
-                />
+                <div className="filter-input-container">
+                    <label htmlFor='by-name'>By Name</label>
+                    <input className="filter-input"
+                        name={field}
+                        id='by-name'
+                        type='text'
+                        placeholder='name'
+                        value={filterBy[field]}
+                        onChange={this.handleChange}
+                    />
+                    <select name="field" id="field" onChange={(ev) => {
+                        this.onSelect(ev)
+                    }}>
+                        <option value="empty"></option>
+                        <option value="name">Name</option>
+                        <option value="emailAddress">Email</option>
+                    </select>
                 <button>Filter</button>
+                </div>
             </form>
         );
     }
