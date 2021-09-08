@@ -23,6 +23,7 @@ export class _NoteTitleEdit extends React.Component {
 
     handleOnChange = (ev) => {
         this.isFirstToggle = false
+        
         const editTitle = ev.target.value
         this.setState({ editTitle })
     }
